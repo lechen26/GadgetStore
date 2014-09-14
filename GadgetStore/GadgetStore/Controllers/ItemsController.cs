@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GadgetStore.Models;
 
 namespace GadgetStore.Controllers
 {
     public class ItemsController : Controller
     {
+
+        GadgetEntities storeDB = new GadgetEntities();
+
         //
         // GET: /Items/
 
         public ActionResult Index()
         {
-            return View();
+            var items = storeDB.Items.ToList();
+            return View(items);            
         }
 
         //
