@@ -95,3 +95,4 @@ Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\bin\DotNetOpenAuth.Op
 Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.csprojResolveAssemblyReference.cache
 Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.dll
 Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.pdb
+G:\Studies\WebDevelopment\GitHub\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.csprojResolveAssemblyReference.cache
