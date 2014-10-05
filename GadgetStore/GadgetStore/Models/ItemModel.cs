@@ -12,7 +12,7 @@ namespace GadgetStore.Models
         [Key]
         public int ItemId { get; set; }
         public string Name { get; set; }
-        public string Decription { get; set; }
+        public string Description { get; set; }
         public string PhotoUrl { get; set; }
         [ForeignKey("CategoryModel")]
         public int CategoryId { get; set; }

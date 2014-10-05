@@ -16,9 +16,14 @@ namespace GadgetStore.Controllers
         public ActionResult Index()
         {
             var categories = storeDB.Categories.ToList();
-            return View(categories);            
+            return View(categories);
         }
 
+        public ActionResult ViewPhoto(int id)
+        {
+            var photo = storeDB.Categories.Find(id).PhotoUrl;
+            return File(photo, "image/jpeg"); // you'll need to specify the content type based on your picture
+        }
         //
         // GET: /Categories/Details/5
 

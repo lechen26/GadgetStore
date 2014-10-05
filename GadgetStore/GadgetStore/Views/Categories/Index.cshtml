@@ -4,13 +4,13 @@
     <ul>
         @foreach (var cat in Model)
         {
-            <li>@Html.ActionLink(cat.Name, 
-                    "Index", "Categories", 
-                    new { CategoryModel = cat.Name }, null)
-            </li>
-        }
-        
+              <a href="@Url.Action("Index","Categories",new { CategoryModel = cat.Name})">
+                   <img src="@Url.Content(@cat.PhotoUrl)" alt ="" width="250" height="250" border="5" title="@cat.Name" />                   
+               </a>
+        }        
         <li>@Html.ActionLink("More...", "Index", "Categories")
         </li> 
     </ul>
 </nav>
+
+</table>

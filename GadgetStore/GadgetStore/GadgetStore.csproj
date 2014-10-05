@@ -180,6 +180,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Categories\accessories.png" />
+    <Content Include="Content\Images\Categories\cellulares.png" />
+    <Content Include="Content\Images\Categories\cellularesBig.png" />
+    <Content Include="Content\Images\Categories\coupon.png" />
+    <Content Include="Content\Images\Categories\gadgets.png" />
+    <Content Include="Content\Images\Categories\laptops.png" />
+    <Content Include="Content\Images\Categories\tablets.png" />
     <Content Include="Content\Images\home-showcase.png" />
     <Content Include="Content\Images\home-showcaseSm.png" />
     <Content Include="Content\Images\logo.png" />
