@@ -95,3 +95,4 @@ G:\Studies\WebDevelopment\GitHub\GadgetStore\GadgetStore\GadgetStore\bin\DotNetO
 G:\Studies\WebDevelopment\GitHub\GadgetStore\GadgetStore\GadgetStore\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 G:\Studies\WebDevelopment\GitHub\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.dll
 G:\Studies\WebDevelopment\GitHub\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.pdb
+G:\Studies\WebDevelopment\GitHub\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.csprojResolveAssemblyReference.cache

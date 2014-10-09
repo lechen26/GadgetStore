@@ -3,14 +3,15 @@
 <nav id="categories">
     <ul>
         @foreach (var cat in Model)
-        {
-              <a href="@Url.Action("Index","Categories",new { CategoryModel = cat.Name})">
-                   <img src="@Url.Content(@cat.PhotoUrl)" alt ="" width="250" height="250" border="5" title="@cat.Name" />                   
+        {            
+            <li>
+                @Html.ActionLink(cat.Name,null);                         
+                <a href="@Url.Action("Index","Categories",new { CategoryModel = cat.Name})">
+                   <img src="@Url.Content(@cat.PhotoUrl)" alt ="" width="200" height="200" border="5" />                   
                </a>
+            </li>
         }        
         <li>@Html.ActionLink("More...", "Index", "Categories")
         </li> 
     </ul>
 </nav>
-
-</table>
