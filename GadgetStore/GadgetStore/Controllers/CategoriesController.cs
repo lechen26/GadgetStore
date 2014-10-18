@@ -11,8 +11,7 @@ namespace GadgetStore.Controllers
     {
         GadgetEntities storeDB = new GadgetEntities();
         //
-        // GET: /Categories/
-
+        // GET: /Categories/        
         public ActionResult Index()
         {
             var categories = storeDB.Categories.ToList();

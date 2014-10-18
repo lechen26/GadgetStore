@@ -12,7 +12,7 @@ namespace GadgetStore.Models
         {
             modelBuilder.Entity<CategoryModel>().ToTable("Categories");
             modelBuilder.Entity<ManufactureModel>().ToTable("Manufactures");
-            modelBuilder.Entity<ItemModel>().ToTable("Items");
+            modelBuilder.Entity<ItemModel>().ToTable("Items");            
 
             base.OnModelCreating(modelBuilder);
         }

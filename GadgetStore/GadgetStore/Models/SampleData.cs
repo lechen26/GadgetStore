@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebMatrix.WebData;
 using System.Data.Entity;
+using System.Web.Security;
+
+
 
 namespace GadgetStore.Models
 {
-    public class SampleData : DropCreateDatabaseIfModelChanges<GadgetEntities>
+    public class SampleData : DropCreateDatabaseAlways<GadgetEntities>
     {
         protected override void Seed(GadgetEntities context)
-        {
+        {            
             const string ImgUrl = "~/Content/Images/placeholder.png";
             const string ImgCategoryUrl = "~/Content/Images/Categories/";
             var manufactures = AddManufactures(context, ImgUrl);
             var categories = AddCategories(context, ImgCategoryUrl);
             context.SaveChanges();
-            AddItems(context, ImgUrl, manufactures, categories);
+            AddItems(context, ImgUrl, manufactures, categories);            
             context.SaveChanges();
         }
+        
 
         private static List<ManufactureModel> AddManufactures(GadgetEntities context, string imgUrl)
          {
@@ -44,6 +49,7 @@ namespace GadgetStore.Models
             var categories = new List<CategoryModel> 
              {
                 new CategoryModel { Name = "Cellular",Description="Cellular devices", PhotoUrl = "~/Content/Images/Categories/Cellular.png" },
+                new CategoryModel { Name = "PcParts",Description="PcParts", PhotoUrl = "~/Content/Images/Categories/Cellular.png" },
                 new CategoryModel { Name = "Tablets",Description="Tablets", PhotoUrl = "~/Content/Images/Categories/Tablets.png" },
                 new CategoryModel { Name = "Laptops",Description="Laptops", PhotoUrl = "~/Content/Images/Categories/Laptops.png" },
                 new CategoryModel { Name = "Gadgets",Description="Cool Gadgets", PhotoUrl = "~/Content/Images/Categories/Gadgets.png" },
