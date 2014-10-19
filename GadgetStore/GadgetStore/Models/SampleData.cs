@@ -10,10 +10,12 @@ using System.Web.Security;
 
 namespace GadgetStore.Models
 {
-    public class SampleData : DropCreateDatabaseAlways<GadgetEntities>
+    public class SampleData : DropCreateDatabaseIfModelChanges<GadgetEntities>
     {
         protected override void Seed(GadgetEntities context)
-        {            
+        {
+            WebSecurity.InitializeDatabaseConnection("GadgetEntities", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            AddRolesAndUser();
             const string ImgUrl = "~/Content/Images/placeholder.png";
             const string ImgCategoryUrl = "~/Content/Images/Categories/";
             var manufactures = AddManufactures(context, ImgUrl);
@@ -22,7 +24,22 @@ namespace GadgetStore.Models
             AddItems(context, ImgUrl, manufactures, categories);            
             context.SaveChanges();
         }
-        
+
+
+        private static void AddRolesAndUser()
+        {
+            var roles = (SimpleRoleProvider)Roles.Provider;
+            var membership = (SimpleMembershipProvider)Membership.Provider;
+            if (!roles.RoleExists("Admin"))
+                roles.CreateRole("Admin");
+            if (!roles.RoleExists("User"))
+                roles.CreateRole("User");
+            if (membership.GetUser("admin", false) == null)
+            {
+                membership.CreateUserAndAccount("admin", "Password1!");
+                roles.AddUsersToRoles(new[] { "admin" }, new[] { "Admin" });
+            }
+        }
 
         private static List<ManufactureModel> AddManufactures(GadgetEntities context, string imgUrl)
          {
@@ -44,17 +61,17 @@ namespace GadgetStore.Models
          }
 
 
-        private static List<CategoryModel> AddCategories(GadgetEntities context, string ImgCategoryUrl)
+        private static List<CategoryModel> AddCategories(GadgetEntities context,string CategoryImgDir)
         {
             var categories = new List<CategoryModel> 
              {
-                new CategoryModel { Name = "Cellular",Description="Cellular devices", PhotoUrl = "~/Content/Images/Categories/Cellular.png" },
-                new CategoryModel { Name = "PcParts",Description="PcParts", PhotoUrl = "~/Content/Images/Categories/Cellular.png" },
-                new CategoryModel { Name = "Tablets",Description="Tablets", PhotoUrl = "~/Content/Images/Categories/Tablets.png" },
-                new CategoryModel { Name = "Laptops",Description="Laptops", PhotoUrl = "~/Content/Images/Categories/Laptops.png" },
-                new CategoryModel { Name = "Gadgets",Description="Cool Gadgets", PhotoUrl = "~/Content/Images/Categories/Gadgets.png" },
-                new CategoryModel { Name = "Accessories",Description="Cellular Accessories", PhotoUrl = "~/Content/Images/Categories/Accessories.png" }, 
-                new CategoryModel { Name = "Coupons",Description="Coupons", PhotoUrl = "~/Content/Images/Categories/Coupons.png" }
+                new CategoryModel { Name = "Cellular",Description="Cellular devices", PhotoUrl = CategoryImgDir + "Cellular.png" },
+                new CategoryModel { Name = "PcParts",Description="PcParts", PhotoUrl = CategoryImgDir + "Cellular.png" },
+                new CategoryModel { Name = "Tablets",Description="Tablets", PhotoUrl = CategoryImgDir + "Tablets.png" },
+                new CategoryModel { Name = "Laptops",Description="Laptops", PhotoUrl = CategoryImgDir + "Laptops.png" },
+                new CategoryModel { Name = "Gadgets",Description="Cool Gadgets", PhotoUrl = CategoryImgDir + "Gadgets.png" },
+                new CategoryModel { Name = "Accessories",Description="Cellular Accessories", PhotoUrl = CategoryImgDir + "Accessories.png" }, 
+                new CategoryModel { Name = "Coupons",Description="Coupons", PhotoUrl = CategoryImgDir + "Coupons.png" }
             };
             categories.ForEach(s => context.Categories.Add(s));
             context.SaveChanges();

@@ -1,5 +1,16 @@
-﻿@{
-    ViewBag.Title = "Items";
-}
+﻿@model IEnumerable<GadgetStore.Models.ItemModel>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>        
+    </tr>
 
-<h2>@ViewBag.Title</h2>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+    </tr>
+}
+</table>

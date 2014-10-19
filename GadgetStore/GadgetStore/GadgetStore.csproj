@@ -172,15 +172,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201410171305420_Initial.cs" />
-    <Compile Include="Migrations\201410171305420_Initial.Designer.cs">
-      <DependentUpon>201410171305420_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410180843174_AddAdminRoles.cs" />
-    <Compile Include="Migrations\201410180843174_AddAdminRoles.Designer.cs">
-      <DependentUpon>201410180843174_AddAdminRoles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\GadgetEntities.cs" />
@@ -319,6 +310,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Manifactures\Index.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Items\browse.cshtml" />
+    <Content Include="Views\Categories\Browse.cshtml" />
+    <Content Include="Views\Items\List.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -327,14 +321,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410171305420_Initial.resx">
-      <DependentUpon>201410171305420_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410180843174_AddAdminRoles.resx">
-      <DependentUpon>201410180843174_AddAdminRoles.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -11,12 +11,28 @@ namespace GadgetStore.Controllers
     {
         GadgetEntities storeDB = new GadgetEntities();
         //
-        // GET: /Categories/        
+        
+        // GET: /Categories
         public ActionResult Index()
         {
             var categories = storeDB.Categories.ToList();
             return View(categories);
         }
+
+        // GET: /Categories/Browse?category=
+        public ActionResult Browse(string category)
+        {
+
+            var query = from c in storeDB.Categories
+                        where c.Name.Equals(category)
+                        join i in storeDB.Items
+                        on c.CategoryId equals i.CategoryId
+                        select i;
+
+            return View(query.ToList());
+            //return RedirectToAction("List", "Items", query.ToList());
+        }
+
 
         public ActionResult ViewPhoto(int id)
         {

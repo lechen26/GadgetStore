@@ -21,6 +21,16 @@ namespace GadgetStore.Controllers
             return View(items);            
         }
 
+        public ActionResult Browse(string category)
+        {
+            var query = from c in storeDB.Categories
+                        where c.Name.Equals(category)
+                        join i in storeDB.Items
+                        on c.CategoryId equals i.CategoryId
+                        select i;
+            return View(query.ToList());
+        }
+
         //
         // GET: /Items/Details/5
 

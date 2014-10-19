@@ -20,8 +20,12 @@ namespace GadgetStore
        
         protected void Application_Start()
         {
-            WebSecurity.InitializeDatabaseConnection("GadgetEntities", "UserProfile", "UserId", "UserName", autoCreateTables: true);
-            Database.SetInitializer(new SampleData());           
+            Database.SetInitializer<GadgetEntities>(new SampleData());
+            GadgetEntities context = new GadgetEntities();
+            context.Database.Initialize(true);
+            if (!WebSecurity.Initialized)
+                WebSecurity.InitializeDatabaseConnection("GadgetEntities",
+                     "UserProfile", "UserId", "UserName", autoCreateTables: true);
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

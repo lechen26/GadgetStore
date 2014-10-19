@@ -6,7 +6,7 @@
         {            
             <li>
                 @Html.ActionLink(cat.Name,null);                         
-                <a href="@Url.Action("Index","Categories",new { CategoryModel = cat.Name})">
+                <a href="@Url.Action("Browse","Items",new { category = cat.Name})">
                    <img src="@Url.Content(@cat.PhotoUrl)" alt ="" width="200" height="200" border="5" />                   
                </a>
             </li>
