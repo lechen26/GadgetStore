@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GadgetStore.Models.ManufactureModel>
+    <table>
+
+@{
+    ViewBag.Title = "Manufactures";
+}
+
+<h2>Items</h2>
+
+@using (Html.BeginForm("Index", "ManufactureModel", FormMethod.Get))
+{
+    @:Search: <input type="search" name="searchText" /> 
+    <input type="submit" value="Search" />
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>  
+        <th></th>
+    </tr>
+
+@foreach (var manuf in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelManuf => manuf.Name)
+        </td>    
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=manuf.ManufactureId }) |
+            @Html.ActionLink("Details", "Details", new { id=manuf.ManufactureId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=manuf.ManufactureId })
+        </td>
+    </tr>
+}
+
+</table>

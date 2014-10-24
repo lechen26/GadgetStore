@@ -3,53 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using GadgetStore.Models;
 
-namespace GadgetStore.Controllers
+namespace GadgetStore.Areas.Admin.Controllers
 {
-    public class CategoriesController : Controller
+    public class DashBoardController : Controller
     {
-        GadgetEntities storeDB = new GadgetEntities();
         //
-        
-        // GET: /Categories
+        // GET: /Admin/DashBoard/
+
         public ActionResult Index()
         {
-            var categories = storeDB.Categories.ToList();
-            
-            return View(categories);
+            return View();
         }
 
-        [Authorize(Users="admin")]
-        public ActionResult IndexAdmin()
-        {
-            var categories = storeDB.Categories.ToList();
-
-            return View("/Areas/Admin/Views/categories/index.cshtml");
-        }
-
-        // GET: /Categories/Browse?category=
-        public ActionResult Browse(string category)
-        {
-
-            var query = from c in storeDB.Categories
-                        where c.Name.Equals(category)
-                        join i in storeDB.Items
-                        on c.CategoryId equals i.CategoryId
-                        select i;
-
-            return View(query.ToList());
-            //return RedirectToAction("List", "Items", query.ToList());
-        }
-
-
-        public ActionResult ViewPhoto(int id)
-        {
-            var photo = storeDB.Categories.Find(id).PhotoUrl;
-            return File(photo, "image/jpeg"); // you'll need to specify the content type based on your picture
-        }
         //
-        // GET: /Categories/Details/5
+        // GET: /Admin/DashBoard/Details/5
 
         public ActionResult Details(int id)
         {
@@ -57,7 +25,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // GET: /Categories/Create
+        // GET: /Admin/DashBoard/Create
 
         public ActionResult Create()
         {
@@ -65,7 +33,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // POST: /Categories/Create
+        // POST: /Admin/DashBoard/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -83,7 +51,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // GET: /Categories/Edit/5
+        // GET: /Admin/DashBoard/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -91,7 +59,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // POST: /Categories/Edit/5
+        // POST: /Admin/DashBoard/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -109,7 +77,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // GET: /Categories/Delete/5
+        // GET: /Admin/DashBoard/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -117,7 +85,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // POST: /Categories/Delete/5
+        // POST: /Admin/DashBoard/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

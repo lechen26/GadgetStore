@@ -3,26 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using GadgetStore.Models;
 
-namespace GadgetStore.Controllers
+namespace GadgetStore.Areas.Admin.Controllers
 {
-    public class ManifacturesController : Controller
+    public class SettingsController : Controller
     {
-
-        GadgetEntities storeDB = new GadgetEntities();
-
         //
-        // GET: /Manifactures/
+        // GET: /Admin/Settings/
 
         public ActionResult Index()
         {
-            var manufactures = storeDB.Manufactures.ToList();
-            return View(manufactures);    
+            return View();
         }
 
         //
-        // GET: /Manifactures/Details/5
+        // GET: /Admin/Settings/Details/5
 
         public ActionResult Details(int id)
         {
@@ -30,7 +25,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // GET: /Manifactures/Create
+        // GET: /Admin/Settings/Create
 
         public ActionResult Create()
         {
@@ -38,7 +33,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // POST: /Manifactures/Create
+        // POST: /Admin/Settings/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -56,7 +51,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // GET: /Manifactures/Edit/5
+        // GET: /Admin/Settings/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -64,7 +59,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // POST: /Manifactures/Edit/5
+        // POST: /Admin/Settings/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -82,7 +77,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // GET: /Manifactures/Delete/5
+        // GET: /Admin/Settings/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -90,7 +85,7 @@ namespace GadgetStore.Controllers
         }
 
         //
-        // POST: /Manifactures/Delete/5
+        // POST: /Admin/Settings/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

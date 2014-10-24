@@ -164,11 +164,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemsAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManufacturesAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
-    <Compile Include="Controllers\ManifacturesController.cs" />
+    <Compile Include="Controllers\ManufacturesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +201,19 @@
     <Content Include="Content\Images\placeholder.gif" />
     <Content Include="Content\Images\placeholder.png" />
     <Content Include="Content\Images\placeholder.svg" />
+    <Content Include="Content\themes\base\admin\images\add-button.gif" />
+    <Content Include="Content\themes\base\admin\images\button.gif" />
+    <Content Include="Content\themes\base\admin\images\close.gif" />
+    <Content Include="Content\themes\base\admin\images\del.gif" />
+    <Content Include="Content\themes\base\admin\images\edit.gif" />
+    <Content Include="Content\themes\base\admin\images\footer.gif" />
+    <Content Include="Content\themes\base\admin\images\header.gif" />
+    <Content Include="Content\themes\base\admin\images\msg-error.gif" />
+    <Content Include="Content\themes\base\admin\images\msg-ok.gif" />
+    <Content Include="Content\themes\base\admin\images\pagging.gif" />
+    <Content Include="Content\themes\base\admin\images\tab.gif" />
+    <Content Include="Content\themes\base\admin\images\th.gif" />
+    <Content Include="Content\themes\base\admin\style.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -252,6 +271,13 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Images\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManufacturesAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -308,19 +334,21 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Manifactures\Index.cshtml" />
+    <Content Include="Views\Manufactures\Index.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Items\browse.cshtml" />
     <Content Include="Views\Categories\Browse.cshtml" />
-    <Content Include="Views\Items\List.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

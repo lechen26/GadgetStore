@@ -205,6 +205,31 @@ ul#menu {
                 text-decoration: none;
             }
 
+ul#adminpage {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0;
+    text-align: left;
+}
+
+    ul#adminpage li {
+        display: inline;
+        list-style: none;
+        padding-left: 15px;
+    }
+
+        ul#adminpage li a {
+            background: none;
+            color: #999;
+            text-decoration: none;
+        }
+
+            ul#adminpage li a:hover {
+                color: #333;
+                text-decoration: none;
+            }
+
 
 /* page elements
 ----------------------------------------------------------*/
@@ -907,4 +932,6 @@ div#album-details p {
     p.site-title {
         background-position: center top;
     }
+
 }
+
