@@ -41,3 +41,4 @@ Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\bin\DotNetOpenAuth.Op
 Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.dll
 Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.pdb
+Z:\Documents\workspace\GadgetStore\GadgetStore\GadgetStore\obj\Debug\GadgetStore.csprojResolveAssemblyReference.cache
