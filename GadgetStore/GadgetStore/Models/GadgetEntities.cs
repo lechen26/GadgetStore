@@ -14,7 +14,7 @@ namespace GadgetStore.Models
             modelBuilder.Entity<ManufactureModel>().ToTable("Manufactures");
             modelBuilder.Entity<ItemModel>().ToTable("Items");            
 
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);        
         }
     }
 }

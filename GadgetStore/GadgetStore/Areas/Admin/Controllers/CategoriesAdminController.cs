@@ -32,7 +32,7 @@ namespace GadgetStore.Areas.Admin.Controllers
         // GET: /Admin/CategoriesAdmin/Create
 
         public ActionResult Create()
-        {
+        {            
             return View();
         }
 
@@ -40,18 +40,15 @@ namespace GadgetStore.Areas.Admin.Controllers
         // POST: /Admin/CategoriesAdmin/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CategoryModel category)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                storeDB.Categories.Add(category);
+                storeDB.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            }            
+            return View(category);
         }
 
         //
@@ -83,27 +80,25 @@ namespace GadgetStore.Areas.Admin.Controllers
         //
         // GET: /Admin/CategoriesAdmin/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id=0)
         {
-            return View();
+            CategoryModel cat = storeDB.Categories.Find(id);            
+            if (cat == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cat);
         }
 
         //
         // POST: /Admin/CategoriesAdmin/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+         [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            CategoryModel cat = storeDB.Categories.Find(id);
+            storeDB.Categories.Remove(cat);
+            storeDB.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
