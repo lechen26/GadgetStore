@@ -36,7 +36,8 @@ namespace GadgetStore.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var item = storeDB.Items.Find(id);
+            return View(item); 
         }
 
         //
