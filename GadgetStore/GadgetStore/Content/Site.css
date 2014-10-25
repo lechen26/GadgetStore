@@ -135,12 +135,13 @@ footer {
     margin: 0;
 }
 
-    .site-title a, .site-title a:hover, .site-title a:active {
-        background: none;
-        color: #c8c8c8;
-        outline: none;
-        text-decoration: none;
-    }
+.site-title a, .site-title a:hover, .site-title a:active {
+    background: none;
+    color: #c8c8c8;
+    outline: none;
+    text-decoration: none;
+}
+
 
 
 /* login
@@ -200,6 +201,31 @@ ul#menu {
         }
 
             ul#menu li a:hover {
+                color: #333;
+                text-decoration: none;
+            }
+
+ul#adminpage {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0;
+    text-align: left;
+}
+
+    ul#adminpage li {
+        display: inline;
+        list-style: none;
+        padding-left: 15px;
+    }
+
+        ul#adminpage li a {
+            background: none;
+            color: #999;
+            text-decoration: none;
+        }
+
+            ul#adminpage li a:hover {
                 color: #333;
                 text-decoration: none;
             }
@@ -396,13 +422,14 @@ aside {
 
 /* forms */
 fieldset {
-    border: none;
+    border: 1px;
     margin: 0;
     padding: 0;
 }
 
     fieldset legend {
-        display: none;
+        display: inline;
+        font-size: 1.2em;
     }
 
     fieldset ol {
@@ -906,4 +933,6 @@ div#album-details p {
     p.site-title {
         background-position: center top;
     }
+
 }
+

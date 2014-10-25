@@ -1,0 +1,46 @@
+﻿@model GadgetStore.Models.ItemModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>    
+@using (Html.BeginForm())
+{    
+    <div class="box">        
+        <div class="box-head">
+            <h2>Add New Item</h2>
+        </div>
+        <div class="form">
+            <p class="inline-field">
+                <label>Name</label>
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => Model.Name)
+            </p>        
+            <p class="inline-field">
+                <label>Description</label>
+                @Html.TextBoxFor(model => model.Description)
+                @Html.ValidationMessageFor(model => Model.Description)
+            </p>   
+            <p class="inline-field">
+                <label>Price</label>
+                @Html.TextBoxFor(model => model.Price)
+                @Html.ValidationMessageFor(model => Model.Price)
+            </p>        
+            <p class="inline-field">
+                <label>Added At</label>
+                @Html.TextBoxFor(model => model.AddedAt)
+                @Html.ValidationMessageFor(model => Model.AddedAt)
+            </p>        
+             <p class="inline-field">
+                <label>PurchaseAmount</label>
+                @Html.TextBoxFor(model => model.PurchaseAmount)
+                @Html.ValidationMessageFor(model => Model.PurchaseAmount)
+            </p>                
+            @*@Html.DropDownList("Items", "Select Item");                *@
+            <div class="buttons">
+                <input type="button" class="button" value="preview" />
+                <input type="submit" class="button" value="submit" />
+            </div>        
+        </div>
+   </div>    
+}

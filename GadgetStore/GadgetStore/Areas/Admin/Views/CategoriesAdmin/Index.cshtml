@@ -1,0 +1,61 @@
+﻿@model IEnumerable<GadgetStore.Models.CategoryModel>
+    <table>
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories Management</h2>
+
+@using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+{
+    @:Search: <input type="search" name="searchText" /> 
+    <input type="submit" value="Search" />
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>  
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>  
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>  
+        <th>
+            @Html.DisplayNameFor(model => model.PhotoUrl)
+        </th>  
+
+        <th></th>
+    </tr>
+
+@foreach (var cat in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelCat => cat.CategoryId)
+        </td>    
+        <td>
+            @Html.DisplayFor(modelCat => cat.Name)
+        </td>    
+        <td>
+            @Html.DisplayFor(modelCat => cat.Description)
+        </td>     
+        <td>
+            @Html.DisplayFor(modelCat => cat.PhotoUrl)
+        </td>     
+        <td>
+          @Html.ActionLink("Edit", "Edit", new { id=cat.CategoryId }) |            
+          @Html.ActionLink("Delete", "Delete", new { id=cat.CategoryId })
+        </td>
+     </tr>
+}   
+    </table>     
+      
+          
+
+

@@ -12,9 +12,15 @@ namespace GadgetStore.Models
         {
             modelBuilder.Entity<CategoryModel>().ToTable("Categories");
             modelBuilder.Entity<ManufactureModel>().ToTable("Manufactures");
+<<<<<<< HEAD
             modelBuilder.Entity<ItemModel>().ToTable("Items");
 
             base.OnModelCreating(modelBuilder);
+=======
+            modelBuilder.Entity<ItemModel>().ToTable("Items");            
+
+            base.OnModelCreating(modelBuilder);        
+>>>>>>> origin/chen
         }
     }
 }

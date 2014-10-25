@@ -8,6 +8,10 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
 using GadgetStore.Models;
+<<<<<<< HEAD
+=======
+using WebMatrix.WebData;
+>>>>>>> origin/chen
 
 namespace GadgetStore
 {
@@ -16,15 +20,31 @@ namespace GadgetStore
 
     public class MvcApplication : System.Web.HttpApplication
     {
+       
         protected void Application_Start()
+<<<<<<< HEAD
         {            
+=======
+        {
+            Database.SetInitializer<GadgetEntities>(new SampleData());
+            GadgetEntities context = new GadgetEntities();
+            context.Database.Initialize(true);
+            if (!WebSecurity.Initialized)
+                WebSecurity.InitializeDatabaseConnection("GadgetEntities",
+                     "UserProfile", "UserId", "UserName", autoCreateTables: true);
+>>>>>>> origin/chen
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+<<<<<<< HEAD
             AuthConfig.RegisterAuth();
             Database.SetInitializer(new SampleData());
+=======
+            AuthConfig.RegisterAuth();                        
+            
+>>>>>>> origin/chen
         }
     }
 }

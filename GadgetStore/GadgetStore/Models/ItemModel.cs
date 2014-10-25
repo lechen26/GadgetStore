@@ -10,9 +10,16 @@ namespace GadgetStore.Models
     public class ItemModel
     {
         [Key]
+<<<<<<< HEAD
         public int ItemId { get; set; }
         public string Name { get; set; }
         public string Decription { get; set; }
+=======
+        [Display(Name = "ID")]
+        public int ItemId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+>>>>>>> origin/chen
         public string PhotoUrl { get; set; }
         [ForeignKey("CategoryModel")]
         public int CategoryId { get; set; }

@@ -16,15 +16,14 @@ namespace GadgetStore.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
-    }
-
+    }    
     [Table("UserProfile")]
     public class UserProfile
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
-        public string UserName { get; set; }
+        public string UserName { get; set; }  
     }
 
     public class RegisterExternalLoginModel
@@ -68,6 +67,7 @@ namespace GadgetStore.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+       
     }
 
     public class RegisterModel
@@ -86,6 +86,8 @@ namespace GadgetStore.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        
+     
     }
 
     public class ExternalLogin
