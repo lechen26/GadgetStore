@@ -331,6 +331,7 @@
     <Content Include="Views\Categories\Browse.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Items\Details.cshtml" />
+    <Content Include="Views\Manufactures\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

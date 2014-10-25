@@ -26,7 +26,8 @@ namespace GadgetStore.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var manufa = storeDB.Manufactures.Find(id);
+            return View(manufa);
         }
 
         //
