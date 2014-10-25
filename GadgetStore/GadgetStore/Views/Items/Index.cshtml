@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<GadgetStore.Models.ItemModel>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>        
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Name, "Details", new { id = item.ItemId })
-        </td>
-    </tr>
+@{
+ViewBag.Title = "Items";
 }
-</table>
+<h2> Items </h2>
+<nav id ="items">
+    <br />
+    <ul>
+    @foreach (var item in Model)
+    {
+    
+        <li> @Html.ActionLink(item.Name, "Details", new { id = item.ItemId }) 
+            <img src="@Url.Content(@item.PhotoUrl)" />
+        </li>
+    }
+    </ul>
+</nav>

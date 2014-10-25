@@ -1,5 +1,6 @@
 ﻿@model GadgetStore.Models.ItemModel
 
+
 @{
     ViewBag.Title = "Details";
 }
@@ -9,7 +10,9 @@
 <img src="@Url.Content(@Model.PhotoUrl)" /> <br />
 Price : @Model.Price <br />
 Description: @Model.Description<br />
-Purchased @Model.PurchaseAmount times
+Purchased @Model.PurchaseAmount times <br />
+
+Manufucture : @ViewBag.ManufuctureID
 
 
 
