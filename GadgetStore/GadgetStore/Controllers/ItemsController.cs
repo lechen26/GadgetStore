@@ -36,7 +36,13 @@ namespace GadgetStore.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var item = storeDB.Items.Find(id);
+            var query = from c in storeDB.Manufactures
+                              where c.ManufactureId.Equals(item.ManufactureId)
+                              select c.Name;
+            ViewBag.ManufuctureID = query.First();
+
+            return View(item); 
         }
 
         //
