@@ -36,6 +36,8 @@ Icon
 .Spotlight-V100
 .Trashes
 *.suo
+*.mdf
+*.ldf
 
 bin/
 obj/Debug
