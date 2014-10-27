@@ -1,0 +1,31 @@
+﻿@model GadgetStore.Models.ManufactureModel
+@using (Html.BeginForm())     
+{    
+    @Html.ValidationSummary(true)
+    <div class="box">        
+        <div class="box-head">
+            <h2>Add New Manufacture</h2>
+        </div>
+        <div class="form">
+            <p class="inline-field">
+                <label>Manufacture Name</label>
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => Model.Name)
+            </p>        
+            <p class="inline-field">
+                <label>Description for Manufacture</label>
+                @Html.TextBoxFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </p>        
+            <p class="inline-field">
+                <label>Url Path for Manufacture's Photo</label>
+                @Html.TextBoxFor(model => model.PhotoUrl)
+                @Html.ValidationMessageFor(model => model.PhotoUrl)
+            </p>        
+            <div class="buttons">
+                <input type="button" class="button" value="preview" />
+                <input type="submit" class="button" value="submit" />
+            </div>        
+        </div>
+   </div>                   
+}
