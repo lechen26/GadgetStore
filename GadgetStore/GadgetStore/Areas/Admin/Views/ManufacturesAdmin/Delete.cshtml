@@ -1,4 +1,4 @@
-﻿@model GadgetStore.Models.CategoryModel 
+﻿@model GadgetStore.Models.ManufactureModel 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,15 +7,15 @@
 <h2>Delete</h2>
  
 <h3>Are you sure you want to delete this?</h3>
-<h4>Note: Deleting a Category will delete also all Items related</h4>
+<h4>Note: Deleting a Manufacture will delete also all Items related</h4>
 <fieldset>
-    <legend>Category</legend>
+    <legend>Manufacture</legend>
  
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CategoryId)
+         @Html.DisplayNameFor(model => model.ManufactureId)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.CategoryId)
+        @Html.DisplayFor(model => model.ManufactureId)
     </div>
  
     <div class="display-label">
