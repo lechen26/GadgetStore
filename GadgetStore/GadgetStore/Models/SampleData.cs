@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace GadgetStore.Models
 {
-    public class SampleData : DropCreateDatabaseIfModelChanges<GadgetEntities>
+    public class SampleData : CreateDatabaseIfNotExists<GadgetEntities>
     {
         protected override void Seed(GadgetEntities context)
         {
@@ -21,7 +21,7 @@ namespace GadgetStore.Models
             var manufactures = AddManufactures(context, ImgUrl);
             var categories = AddCategories(context, ImgCategoryUrl);
             context.SaveChanges();
-            AddItems(context, ImgUrl, manufactures, categories);            
+            AddItems(context, ImgUrl, manufactures, categories);
             context.SaveChanges();
         }
 
@@ -42,8 +42,8 @@ namespace GadgetStore.Models
         }
 
         private static List<ManufactureModel> AddManufactures(GadgetEntities context, string imgUrl)
-         {
-             var manufactures  = new List<ManufactureModel>
+        {
+            var manufactures = new List<ManufactureModel>
              {
                 new ManufactureModel { Name = "Apple",Description="Apple Manufacture", PhotoUrl = imgUrl },                
                 new ManufactureModel { Name = "Samsung",Description="Samsung Manufacture", PhotoUrl = imgUrl },
@@ -55,13 +55,13 @@ namespace GadgetStore.Models
                 new ManufactureModel { Name = "Logitech",Description="Logitech Manufacture", PhotoUrl = imgUrl }                
 
              };
-             manufactures.ForEach(s=> context.Manufactures.Add(s));
-             context.SaveChanges();
-             return manufactures;
-         }
+            manufactures.ForEach(s => context.Manufactures.Add(s));
+            context.SaveChanges();
+            return manufactures;
+        }
 
 
-        private static List<CategoryModel> AddCategories(GadgetEntities context,string CategoryImgDir)
+        private static List<CategoryModel> AddCategories(GadgetEntities context, string CategoryImgDir)
         {
             var categories = new List<CategoryModel> 
              {
