@@ -1,6 +1,5 @@
 ﻿@model GadgetStore.Models.ManufactureModel
 
-
 @{
     ViewBag.Title = "Details";
 }
@@ -11,6 +10,14 @@
 Description: @Model.Description<br />
 
 <h2>Items by Manufacture </h2>
- @ViewBag.manufacItems
-
+<nav id ="items">
+<ul>
+    @foreach (var item in @ViewBag.manufacItems)
+    {
+       <li> @Html.ActionLink(item.Name, "Details", new { id = item.ItemId }) 
+            <img src="@Url.Content(@item.PhotoUrl)" />
+       </li>
+    }
+</ul>
+</nav>
 

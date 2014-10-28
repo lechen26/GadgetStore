@@ -32,7 +32,7 @@ namespace GadgetStore.Controllers
                          join i in storeDB.Items
                          on c.ManufactureId equals i.ManufactureId
                          select i;
-            ViewBag.manufacItems = query.First();
+            ViewBag.manufacItems = query.ToList();
             return View(manufa);
         }
 
