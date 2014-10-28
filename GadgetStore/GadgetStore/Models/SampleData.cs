@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace GadgetStore.Models
 {
-    public class SampleData : CreateDatabaseIfNotExists<GadgetEntities>
+    public class SampleData : DropCreateDatabaseIfModelChanges<GadgetEntities>
     {
         protected override void Seed(GadgetEntities context)
         {
@@ -18,7 +18,7 @@ namespace GadgetStore.Models
             AddRolesAndUser();
             const string ImgUrl = "~/Content/Images/placeholder.png";
             const string ImgCategoryUrl = "~/Content/Images/Categories/";
-            const string ImgManufactureUrl = "~/Content/Images/Manufactures/";
+            const string ImgManufactureUrl = "~/Content/Images/Manufactures/";            
             var manufactures = AddManufactures(context, ImgManufactureUrl);
             var categories = AddCategories(context, ImgCategoryUrl);
             context.SaveChanges();
@@ -71,7 +71,7 @@ namespace GadgetStore.Models
                 new CategoryModel { Name = "Tablets",Description="Tablets", PhotoUrl = CategoryImgDir + "Tablets.png" },
                 new CategoryModel { Name = "Laptops",Description="Laptops", PhotoUrl = CategoryImgDir + "Laptops.png" },
                 new CategoryModel { Name = "Gadgets",Description="Cool Gadgets", PhotoUrl = CategoryImgDir + "Gadgets.png" },
-                new CategoryModel { Name = "Accessories",Description="Cellular Accessories", PhotoUrl = CategoryImgDir + "Accessories.png" }, 
+                new CategoryModel { Name = "Accessories",Description="Cellular ", PhotoUrl = CategoryImgDir + "Accessories.png" }, 
                 new CategoryModel { Name = "Coupons",Description="Coupons", PhotoUrl = CategoryImgDir + "Coupons.png" }
             };
             categories.ForEach(s => context.Categories.Add(s));

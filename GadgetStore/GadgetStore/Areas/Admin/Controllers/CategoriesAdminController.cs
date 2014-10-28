@@ -66,7 +66,7 @@ namespace GadgetStore.Areas.Admin.Controllers
         //
         // POST: //Admin/CategoriesAdmin/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "CategoryId,Name,Description")] CategoryModel cat)
+        public ActionResult Edit([Bind(Include = "CategoryId,Name,Description,PhotoUrl")] CategoryModel cat)
         {
             if (ModelState.IsValid)
             {

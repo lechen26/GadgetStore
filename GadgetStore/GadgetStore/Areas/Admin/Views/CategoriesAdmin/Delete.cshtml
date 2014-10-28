@@ -35,6 +35,8 @@
 @using (Html.BeginForm()) {
     <p>
         <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <a href="@Url.Action("index", "CategoriesAdmin")">
+           <button>Cancel</button>
+        </a>       
     </p>
 }
