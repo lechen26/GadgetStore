@@ -1,6 +1,7 @@
 ﻿using GadgetStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,18 +11,18 @@ namespace GadgetStore.Areas.Admin.Controllers
     public class ManufacturesAdminController : Controller
     {
         GadgetEntities storeDB = new GadgetEntities();
-
         //
-        // GET: /ManufacturesAdmin/
+        // GET: /Admin/ManufactureAdmin/
 
         public ActionResult Index()
         {
             var manufactures = storeDB.Manufactures.ToList();
+
             return View(manufactures);
         }
 
         //
-        // GET: /Admin/ManufacturesAdmin/Details/5
+        // GET: /Admin/ManufactureAdmin/Details/5
 
         public ActionResult Details(int id)
         {
@@ -29,7 +30,7 @@ namespace GadgetStore.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/ManufacturesAdmin/Create
+        // GET: /Admin/ManufactureAdmin/Create
 
         public ActionResult Create()
         {
@@ -37,73 +38,71 @@ namespace GadgetStore.Areas.Admin.Controllers
         }
 
         //
-        // POST: /Admin/ManufacturesAdmin/Create
+        // POST: /Admin/ManufactureAdmin/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ManufactureModel Manuf)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                storeDB.Manufactures.Add(Manuf);
+                storeDB.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(Manuf);
         }
 
         //
-        // GET: /Admin/ManufacturesAdmin/Edit/5
-
-        public ActionResult Edit(int id)
+        // GET: /Admin/ManufactureAdmin/Edit/5
+        public ActionResult Edit(int id = 0)
         {
-            return View();
+            ManufactureModel Manuf = storeDB.Manufactures.Single(c => c.ManufactureId == id);
+            if (Manuf == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Manuf);
         }
 
         //
-        // POST: /Admin/ManufacturesAdmin/Edit/5
-
+        // POST: //Admin/ManufactureAdmin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit([Bind(Include = "ManufactureId,Name,Description,PhotoUrl")] ManufactureModel Manuf)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                storeDB.Entry(Manuf).State = EntityState.Modified;
+                storeDB.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(Manuf);
         }
 
         //
-        // GET: /Admin/ManufacturesAdmin/Delete/5
+        // GET: /Admin/ManufactureAdmin/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            return View();
+            ManufactureModel Manuf = storeDB.Manufactures.Single(c => c.ManufactureId == id);
+            if (Manuf == null)
+                if (Manuf == null)
+                {
+                    return HttpNotFound();
+                }
+            return View(Manuf);
         }
 
         //
-        // POST: /Admin/ManufacturesAdmin/Delete/5
+        // POST: /Admin/ManufactureAdmin/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            ManufactureModel Manuf = storeDB.Manufactures.Single(c => c.ManufactureId == id);
+            storeDB.Manufactures.Remove(Manuf);
+            storeDB.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
+

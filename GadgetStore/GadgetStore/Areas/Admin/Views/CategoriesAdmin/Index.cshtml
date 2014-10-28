@@ -52,10 +52,13 @@
           @Html.ActionLink("Edit", "Edit", new { id=cat.CategoryId }) |            
           @Html.ActionLink("Delete", "Delete", new { id=cat.CategoryId })
         </td>
-     </tr>
-}   
+     </tr>}   
     </table>     
-      
+              
+<a href="@Url.Action("index", "Admin", new { area = "" },null)"
+    <button>Back to Admin DashBoard</button>
+</a>
+
           
 
 

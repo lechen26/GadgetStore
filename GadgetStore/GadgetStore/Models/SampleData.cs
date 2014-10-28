@@ -70,7 +70,7 @@ namespace GadgetStore.Models
                 new CategoryModel { Name = "Tablets",Description="Tablets", PhotoUrl = CategoryImgDir + "Tablets.png" },
                 new CategoryModel { Name = "Laptops",Description="Laptops", PhotoUrl = CategoryImgDir + "Laptops.png" },
                 new CategoryModel { Name = "Gadgets",Description="Cool Gadgets", PhotoUrl = CategoryImgDir + "Gadgets.png" },
-                new CategoryModel { Name = "Accessories",Description="Cellular Accessories", PhotoUrl = CategoryImgDir + "Accessories.png" }, 
+                new CategoryModel { Name = "Accessories",Description="Cellular ", PhotoUrl = CategoryImgDir + "Accessories.png" }, 
                 new CategoryModel { Name = "Coupons",Description="Coupons", PhotoUrl = CategoryImgDir + "Coupons.png" }
             };
             categories.ForEach(s => context.Categories.Add(s));

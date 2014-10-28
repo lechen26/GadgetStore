@@ -23,9 +23,12 @@
                 <label>Url Path for Description's Photo</label>
                 @Html.TextBoxFor(model => model.PhotoUrl)
                 @Html.ValidationMessageFor(model => model.PhotoUrl)
-
+            </p>
             <div class="buttons">                
                 <input type="submit" class="button" value="submit" />
+                <a href="@Url.Action("index", "ManufacturesAdmin")">
+                    <button>Cancel</button>
+                </a> 
             </div>        
     </div>
 }
