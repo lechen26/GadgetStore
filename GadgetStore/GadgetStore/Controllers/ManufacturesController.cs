@@ -18,7 +18,7 @@ namespace GadgetStore.Controllers
         public ActionResult Index()
         {
             var manufactures = storeDB.Manufactures.ToList();
-            return View(manufactures);    
+            return View(manufactures);
         }
 
         //
@@ -26,7 +26,8 @@ namespace GadgetStore.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var manufa = storeDB.Manufactures.Find(id);
+            return View(manufa);
         }
 
         //
