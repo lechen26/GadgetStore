@@ -27,8 +27,24 @@ namespace GadgetStore.Controllers
         public ActionResult Details(int id)
         {
             var manufa = storeDB.Manufactures.Find(id);
+            
             return View(manufa);
         }
+
+        //
+        // GET : /Manufactures/
+        public ActionResult Browse(string manufacture)
+        {
+            var query = from c in storeDB.Manufactures
+                        where c.Name.Equals(manufacture)
+                        join i in storeDB.Items
+                        on c.ManufactureId equals i.ManufactureId
+                        select i;
+
+            return View(query.ToList()); 
+        }
+
+
 
         //
         // GET: /Manufactures/Create

@@ -198,6 +198,13 @@
     <Content Include="Content\Images\home-showcaseSm.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\logo.svg" />
+    <Content Include="Content\Images\Manufactures\Apple.png" />
+    <Content Include="Content\Images\Manufactures\asus.png" />
+    <Content Include="Content\Images\Manufactures\dell.png" />
+    <Content Include="Content\Images\Manufactures\google.png" />
+    <Content Include="Content\Images\Manufactures\lg.png" />
+    <Content Include="Content\Images\Manufactures\logitech.png" />
+    <Content Include="Content\Images\Manufactures\samsung.png" />
     <Content Include="Content\Images\placeholder.gif" />
     <Content Include="Content\Images\placeholder.png" />
     <Content Include="Content\Images\placeholder.svg" />
