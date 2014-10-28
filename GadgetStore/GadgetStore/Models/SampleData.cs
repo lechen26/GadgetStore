@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace GadgetStore.Models
 {
-    public class SampleData : CreateDatabaseIfNotExists<GadgetEntities>
+    public class SampleData : DropCreateDatabaseIfModelChanges<GadgetEntities>
     {
         protected override void Seed(GadgetEntities context)
         {
@@ -18,7 +18,7 @@ namespace GadgetStore.Models
             AddRolesAndUser();
             const string ImgUrl = "~/Content/Images/placeholder.png";
             const string ImgCategoryUrl = "~/Content/Images/Categories/";
-            const string ImgManufactureUrl = "~/Content/Images/Manufactures/";
+            const string ImgManufactureUrl = "~/Content/Images/Manufactures/";            
             var manufactures = AddManufactures(context, ImgManufactureUrl);
             var categories = AddCategories(context, ImgCategoryUrl);
             context.SaveChanges();
