@@ -18,7 +18,8 @@ namespace GadgetStore.Models
             AddRolesAndUser();
             const string ImgUrl = "~/Content/Images/placeholder.png";
             const string ImgCategoryUrl = "~/Content/Images/Categories/";
-            var manufactures = AddManufactures(context, ImgUrl);
+            const string ImgManufactureUrl = "~/Content/Images/Manufactures/";
+            var manufactures = AddManufactures(context, ImgManufactureUrl);
             var categories = AddCategories(context, ImgCategoryUrl);
             context.SaveChanges();
             AddItems(context, ImgUrl, manufactures, categories);
@@ -41,18 +42,18 @@ namespace GadgetStore.Models
             }
         }
 
-        private static List<ManufactureModel> AddManufactures(GadgetEntities context, string imgUrl)
+        private static List<ManufactureModel> AddManufactures(GadgetEntities context, string ImgUrlManu)
         {
             var manufactures = new List<ManufactureModel>
              {
-                new ManufactureModel { Name = "Apple",Description="Apple Manufacture", PhotoUrl = imgUrl },                
-                new ManufactureModel { Name = "Samsung",Description="Samsung Manufacture", PhotoUrl = imgUrl },
-                new ManufactureModel { Name = "Google",Description="Google Manufacture", PhotoUrl = imgUrl },
-                new ManufactureModel { Name = "LG",Description="LG Manufacture", PhotoUrl = imgUrl },
-                new ManufactureModel { Name = "HP",Description="HP Manufacture", PhotoUrl = imgUrl },
-                new ManufactureModel { Name = "Dell",Description="Dell Manufacture", PhotoUrl = imgUrl },
-                new ManufactureModel { Name = "Asus",Description="Asus Manufacture", PhotoUrl = imgUrl },
-                new ManufactureModel { Name = "Logitech",Description="Logitech Manufacture", PhotoUrl = imgUrl }                
+                new ManufactureModel { Name = "Apple",Description="Apple Manufacture", PhotoUrl = ImgUrlManu + "apple.png" },                
+                new ManufactureModel { Name = "Samsung",Description="Samsung Manufacture", PhotoUrl = ImgUrlManu + "samsung.png" },
+                new ManufactureModel { Name = "Google",Description="Google Manufacture", PhotoUrl = ImgUrlManu + "google.png" },
+                new ManufactureModel { Name = "LG",Description="LG Manufacture", PhotoUrl = ImgUrlManu + "lg.png" },
+                new ManufactureModel { Name = "HP",Description="HP Manufacture", PhotoUrl = ImgUrlManu + "hp.png" },
+                new ManufactureModel { Name = "Dell",Description="Dell Manufacture", PhotoUrl = ImgUrlManu + "dell.png" },
+                new ManufactureModel { Name = "Asus",Description="Asus Manufacture", PhotoUrl = ImgUrlManu + "asus.png" },
+                new ManufactureModel { Name = "Logitech",Description="Logitech Manufacture", PhotoUrl = ImgUrlManu + "logitech.png" }                
 
              };
             manufactures.ForEach(s => context.Manufactures.Add(s));

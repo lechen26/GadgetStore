@@ -33,13 +33,18 @@ namespace GadgetStore.Controllers
 
         //
         // GET: /Items/Details/5
-
+        //Details page of an item
         public ActionResult Details(int id)
         {
+            //Get the specific item by id.
             var item = storeDB.Items.Find(id);
+
+            // Perform a query in order to get the Manufacture name of the item, to display it on Details page.
             var query = from c in storeDB.Manufactures
                               where c.ManufactureId.Equals(item.ManufactureId)
                               select c.Name;
+
+            //Save the Manufacture name in a ViewBag.
             ViewBag.ManufuctureID = query.First();
 
             return View(item); 
