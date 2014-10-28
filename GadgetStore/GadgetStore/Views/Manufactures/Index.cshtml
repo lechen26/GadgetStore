@@ -1,5 +1,17 @@
-﻿@{
-    ViewBag.Title = "Manufactures";
+﻿@model IEnumerable<GadgetStore.Models.ManufactureModel>
+@{
+    ViewBag.Title = "Manufacture";
 }
-
-<h2>@ViewBag.Title</h2>
+<h2> Manufactures </h2>
+<nav id ="manufacture">
+    <br />
+    <ul>
+    @foreach (var manufa in Model)
+    {
+    
+        <li> @Html.ActionLink(manufa.Name, "Details", new { id = manufa.ManufactureId }) 
+            <img src="@Url.Content(@manufa.PhotoUrl)" />
+        </li>
+    }
+    </ul>
+</nav>
