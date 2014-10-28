@@ -27,7 +27,12 @@ namespace GadgetStore.Controllers
         public ActionResult Details(int id)
         {
             var manufa = storeDB.Manufactures.Find(id);
-            
+            var query =  from c in storeDB.Manufactures
+                         where c.ManufactureId.Equals(id)
+                         join i in storeDB.Items
+                         on c.ManufactureId equals i.ManufactureId
+                         select i;
+            ViewBag.manufacItems = query.First();
             return View(manufa);
         }
 
