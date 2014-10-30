@@ -1,0 +1,13 @@
+﻿@model GadgetStore.Models.CategoryModel
+
+<nav id ="category">      
+     <h1>@Model.Name Category</h1>
+     <h2>Description: @Model.Description</h2>       
+      @foreach (var item in ViewBag.CategoriesItems)
+      {                    
+        <li> @Html.ActionLink((string)item.Name, "Details", new { id = (Object)item.ItemId }) 
+            <img src="@Url.Content(@item.PhotoUrl)" />
+        </li>
+      }    
+    </ul>
+</nav>
