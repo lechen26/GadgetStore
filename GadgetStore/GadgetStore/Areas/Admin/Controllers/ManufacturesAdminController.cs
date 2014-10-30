@@ -14,11 +14,16 @@ namespace GadgetStore.Areas.Admin.Controllers
         //
         // GET: /Admin/ManufactureAdmin/
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var manufactures = storeDB.Manufactures.ToList();
-
+            var manufactures = from m in storeDB.Manufactures
+                             select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                manufactures = manufactures.Where(s => s.Name.Contains(searchString));
+            }
             return View(manufactures);
+
         }
 
         //
