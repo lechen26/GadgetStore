@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace GadgetStore.Models
 {
-    public class SampleData : DropCreateDatabaseIfModelChanges<GadgetEntities>
+    public class SampleData : CreateDatabaseIfNotExists<GadgetEntities>
     {
         protected override void Seed(GadgetEntities context)
         {
