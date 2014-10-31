@@ -25,6 +25,11 @@ namespace GadgetStore.Models
         public int UserId { get; set; }        
         public string UserName { get; set; }
         public string EmailAddress { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Address { get; set; }
     }
 
     public class RegisterExternalLoginModel
@@ -91,6 +96,19 @@ namespace GadgetStore.Models
         [Required]
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }        
+        [Display(Name = "Country")]
+        public string Country { get; set; }        
+        [Display(Name = "City")]
+        public string City { get; set; }        
+        [Display(Name = "Address")]
+        public string Address { get; set; }
 
         
      
