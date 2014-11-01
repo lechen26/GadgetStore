@@ -119,8 +119,11 @@ namespace GadgetStore.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             UserProfile user = storeDB.UserProfile.Single(c => c.UserId == id);
-            storeDB.UserProfile.Remove(user);
-            storeDB.SaveChanges();
+            if (user.UserName != "admin")
+            {
+                storeDB.UserProfile.Remove(user);
+                storeDB.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
     }
