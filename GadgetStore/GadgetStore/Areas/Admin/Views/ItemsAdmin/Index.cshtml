@@ -44,10 +44,6 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>    
         <td>
-            @Html.DisplayFor(modelItem => item.AddedAt)
-        </td>    
-
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ItemId }) |            
             @Html.ActionLink("Delete", "Delete", new { id=item.ItemId })
         </td>

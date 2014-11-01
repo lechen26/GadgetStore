@@ -73,7 +73,7 @@ namespace GadgetStore.Areas.Admin.Controllers
         //
         // POST: //Admin/ItemsAdmin/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ItemId,Name,Description,PhotoUrl")] ItemModel item)
+        public ActionResult Edit([Bind(Include = "ItemId,ManufactureId,CategoryId,Name,Description,PhotoUrl,PurchaseAmount,Price")] ItemModel item)
         {
             if (ModelState.IsValid)
             {
