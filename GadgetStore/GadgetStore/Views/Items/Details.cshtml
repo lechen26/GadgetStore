@@ -12,8 +12,8 @@ Price : @Model.Price <br />
 Description: @Model.Description<br />
 Purchased @Model.PurchaseAmount times <br />
 
-Manufucture : @ViewBag.ManufuctureID
-
+Manufucture : @ViewBag.ManufuctureID <br />
+@Html.ActionLink((string)@ViewBag.Category, null,null, null, new { href = Request.UrlReferrer})
 
 
 

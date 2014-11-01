@@ -47,6 +47,14 @@ namespace GadgetStore.Controllers
             //Save the Manufacture name in a ViewBag.
             ViewBag.ManufuctureID = query.First();
 
+            //Perform a query in order to get the Cateory Name for the item, to use it on the Details Page
+            var queryCategory = from c in storeDB.Categories
+                                where c.CategoryId.Equals(item.CategoryId)
+                                select c.Name;
+
+            //Save the Category name in a ViewBag
+            ViewBag.Category = queryCategory.First();
+
             return View(item); 
         }
 

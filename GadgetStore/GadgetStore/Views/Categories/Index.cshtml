@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<GadgetStore.Models.CategoryModel>
 
+@using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+{
+    @:Search: <input type="search" name="searchString" /> 
+    <input type="submit" value="Search" />
+}
 <nav id="categories">
     <ul>
         @foreach (var cat in Model)
