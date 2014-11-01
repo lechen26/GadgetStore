@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<GadgetStore.Models.UserProfile>
-    <table>
+<table>
 
 @{
     ViewBag.Title = "Users";
@@ -7,13 +7,21 @@
 
 <h2>Categories Management</h2>
      
-@using (Html.BeginForm("Index", "Users", FormMethod.Get))
-{
-   <p> Search: @Html.TextBox("SearchString") <br />
-    <input type="submit" value="Filter" />     
+<p>
+    @using (Html.BeginForm("Index", "Users", FormMethod.Get))
+    {    
+        <b>Search By:</b>
+            @Html.RadioButton("searchBy","UserName", true);<text>UserName</text>
+            @Html.RadioButton("searchBy","FirstName");<text>First Name</text>
+            @Html.RadioButton("searchBy","LastName");<text>Last Name</text>
+            @Html.RadioButton("searchBy","County");<text>Country</text>
+            @Html.RadioButton("searchBy","City");<text>City</text>
+        <p> Search: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />     
         <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Users")'"/>
-   </p>                 
-}    
+        </p>                      
+    }
+</p>    
  
 <table>
     <tr>
@@ -40,7 +48,8 @@
         </td>          
     </tr>
 
-@foreach (var user in Model) {
+@foreach (var user in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modeluser => user.UserName)
@@ -64,15 +73,17 @@
             @Html.DisplayFor(modelCat => user.EmailAddress)
         </td>    
         <td>
-          @Html.ActionLink("Edit", "Edit", new { id=user.UserId }) |            
-          @Html.ActionLink("Delete", "Delete", new { id=user.UserId })
+          @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) |            
+          @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
         </td>
-     </tr>}   
-    </table>     
-              
-<a href="@Url.Action("index", "Admin", new { area = "" },null)"
+     </tr>
+}                  
+</table>     
+<a href="@Url.Action("index", "Admin", new { area = "" }, null)"
     <button>Back to Admin DashBoard</button>
 </a>
+
+             
 
           
 

@@ -15,14 +15,23 @@ namespace GadgetStore.Areas.Admin.Controllers
         //
         // GET: /Admin/Users/
 
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchBy, string searchString)
         {
             var users = from u in storeDB.UserProfile
                              select u;
             if (!String.IsNullOrEmpty(searchString))
             {
-                users = users.Where(s => s.FirstName.Contains(searchString));
-            }          
+                if (searchBy == "UserName")
+                    users = users.Where(x => x.UserName == searchString);
+                if (searchBy == "FirstName")
+                    users = users.Where(x => x.FirstName == searchString);
+                if (searchBy == "LastName")
+                    users = users.Where(x => x.LastName == searchString);
+                if (searchBy == "Country")
+                    users = users.Where(x => x.Country == searchString);
+                if (searchBy == "City")
+                    users = users.Where(x => x.City == searchString);
+            }            
             return View(users);
         }
 
