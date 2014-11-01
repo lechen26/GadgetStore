@@ -24,7 +24,7 @@
                             <li>@Html.ActionLink("Items", "Index", "Items", new { area = "" },null)</li>
                             <li>@Html.ActionLink("Categories", "Index", "Categories", new { area = "" },null)</li>
                             <li>@Html.ActionLink("Manufactures", "Index", "Manufactures", new { area = "" },null)</li>
-                            @if (Roles.IsUserInRole("Admin"))
+                           @if (Roles.IsUserInRole("Admin"))
                             {
                                     <li>@Html.ActionLink("Administrator", "index", "Admin", new { area = "" },null)</li>
                             }

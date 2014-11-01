@@ -6,13 +6,15 @@
 }
 
 <h2>Manufactures Management</h2>
-
-@using (Html.BeginForm("Index", "Manufactures", FormMethod.Get))
+    
+@using (Html.BeginForm("Index", "ManufacturesAdmin", FormMethod.Get))
 {
-    @:Search: <input type="search" name="searchText" /> 
-    <input type="submit" value="Search" />
-}
-
+   <p> Search: @Html.TextBox("SearchString") <br />
+    <input type="submit" value="Filter" />  
+    <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "ManufacturesAdmin")'"/>
+   </p>                 
+}   
+ 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

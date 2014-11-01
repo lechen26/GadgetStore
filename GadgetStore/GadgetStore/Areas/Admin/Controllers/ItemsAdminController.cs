@@ -11,14 +11,20 @@ namespace GadgetStore.Areas.Admin.Controllers
     public class ItemsAdminController : Controller
     {
         GadgetEntities storeDB = new GadgetEntities();
+
         //
         // GET: /Admin/ItemsAdmin/
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var items = storeDB.Items.ToList();
-
+            var items = from i in storeDB.Items
+                             select i;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(s => s.Name.Contains(searchString));
+            }
             return View(items);
+
         }
 
         //

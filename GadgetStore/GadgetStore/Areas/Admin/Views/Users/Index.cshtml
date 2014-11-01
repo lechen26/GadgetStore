@@ -1,0 +1,79 @@
+﻿@model IEnumerable<GadgetStore.Models.UserProfile>
+    <table>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Categories Management</h2>
+     
+@using (Html.BeginForm("Index", "Users", FormMethod.Get))
+{
+   <p> Search: @Html.TextBox("SearchString") <br />
+    <input type="submit" value="Filter" />     
+        <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Users")'"/>
+   </p>                 
+}    
+ 
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.UserName)
+        </td>  
+         <td>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </td>  
+         <td>
+            @Html.DisplayNameFor(model => model.LastName)
+        </td>  
+         <td>
+            @Html.DisplayNameFor(model => model.Country)
+        </td>  
+        <td>
+            @Html.DisplayNameFor(model => model.City)
+        </td>  
+        <td>
+            @Html.DisplayNameFor(model => model.Address)
+        </td>  
+        <td>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </td>          
+    </tr>
+
+@foreach (var user in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modeluser => user.UserName)
+        </td>    
+         <td>
+            @Html.DisplayFor(modeluser => user.FirstName)
+        </td>  
+         <td>
+            @Html.DisplayFor(modeluser => user.LastName)
+        </td>  
+         <td>
+            @Html.DisplayFor(modeluser => user.Country)
+        </td>  
+        <td>
+            @Html.DisplayFor(modeluser => user.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modeluser => user.Address)
+        </td>  
+        <td>
+            @Html.DisplayFor(modelCat => user.EmailAddress)
+        </td>    
+        <td>
+          @Html.ActionLink("Edit", "Edit", new { id=user.UserId }) |            
+          @Html.ActionLink("Delete", "Delete", new { id=user.UserId })
+        </td>
+     </tr>}   
+    </table>     
+              
+<a href="@Url.Action("index", "Admin", new { area = "" },null)"
+    <button>Back to Admin DashBoard</button>
+</a>
+
+          
+
+

@@ -6,13 +6,15 @@
 }
 
 <h2>Categories Management</h2>
-
-@using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+     
+@using (Html.BeginForm("Index", "CategoriesAdmin", FormMethod.Get))
 {
-    @:Search: <input type="search" name="searchText" /> 
-    <input type="submit" value="Search" />
-}
-
+   <p> Search: @Html.TextBox("SearchString") <br />
+    <input type="submit" value="Filter" />     
+        <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "CategoriesAdmin")'"/>
+   </p>                 
+}    
+        
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

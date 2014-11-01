@@ -5,8 +5,8 @@
         @foreach (var cat in Model)
         {            
             <li>
-                @Html.ActionLink(cat.Name,null);                         
-                <a href="@Url.Action("Browse","Items",new { category = cat.Name})">
+                @Html.ActionLink(cat.Name,null)                      
+                <a href="@Url.Action("Details","Categories",new { id = cat.CategoryId})">
                    <img src="@Url.Content(@cat.PhotoUrl)" alt ="" width="200" height="200" border="5" />                   
                </a>
             </li>

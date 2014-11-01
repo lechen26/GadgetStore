@@ -8,27 +8,27 @@ using System.Web.Mvc;
 
 namespace GadgetStore.Areas.Admin.Controllers
 {
-    public class CategoriesAdminController : Controller
+    public class UsersController : Controller
     {
         GadgetEntities storeDB = new GadgetEntities();
-        
+
         //
-        // GET: /Admin/CategoriesAdmin/
+        // GET: /Admin/Users/
 
         public ActionResult Index(string searchString)
         {
-            var categories = from c in storeDB.Categories
-                             select c;            
+            var users = from u in storeDB.UserProfile
+                             select u;
             if (!String.IsNullOrEmpty(searchString))
             {
-                categories = categories.Where(s => s.Name.Contains(searchString));
-            }
-            return View(categories);
-
+                users = users.Where(s => s.FirstName.Contains(searchString));
+            }          
+            return View(users);
         }
-       
+
+
         //
-        // GET: /Admin/CategoriesAdmin/Details/5
+        // GET: /Admin/Users/Details/5
 
         public ActionResult Details(int id)
         {
@@ -36,7 +36,7 @@ namespace GadgetStore.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/CategoriesAdmin/Create
+        // GET: /Admin/Users/Create
 
         public ActionResult Create()
         {
@@ -44,58 +44,63 @@ namespace GadgetStore.Areas.Admin.Controllers
         }
 
         //
-        // POST: /Admin/CategoriesAdmin/Create
+        // POST: /Admin/Users/Create
 
         [HttpPost]
-        public ActionResult Create(CategoryModel category)
+        public ActionResult Create(FormCollection collection)
         {
-            if (ModelState.IsValid)
+            try
             {
-                storeDB.Categories.Add(category);
-                storeDB.SaveChanges();
+                // TODO: Add insert logic here
+
                 return RedirectToAction("Index");
             }
-            return View(category);
+            catch
+            {
+                return View();
+            }
         }
+
         //
-        // GET: /Admin/CategoriesAdmin/Edit/5
+        // GET: /Admin/Users/Edit/5
+
         public ActionResult Edit(int id = 0)
         {
-            CategoryModel cat = storeDB.Categories.Single(c => c.CategoryId == id);
-            if (cat == null)
+            UserProfile user = storeDB.UserProfile.Single(c => c.UserId == id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(cat);
+            return View(user);
         }
 
         //
-        // POST: //Admin/CategoriesAdmin/Edit/5
+        // POST: //Admin/Users/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "CategoryId,Name,Description,PhotoUrl")] CategoryModel cat)
+        public ActionResult Edit([Bind(Include = "UserId,UserName,FirstName,LastName,Country,City,Address,EmailAddress")] UserProfile user)
         {
             if (ModelState.IsValid)
             {
-                storeDB.Entry(cat).State = EntityState.Modified;                
+                storeDB.Entry(user).State = EntityState.Modified;
                 storeDB.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(cat);
+            return View(user);
         }
 
         //
-        // GET: /Admin/CategoriesAdmin/Delete/5
+        // GET: /Admin/Users/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            CategoryModel cat = storeDB.Categories.Single(c => c.CategoryId == id);
-            if (cat == null)
+            UserProfile user = storeDB.UserProfile.Single(c => c.UserId == id);
+            if (user == null)
                 //CategoryModel cat = storeDB.Categories.Find(id);            
-                if (cat == null)
+                if (user == null)
                 {
                     return HttpNotFound();
                 }
-            return View(cat);
+            return View(user);
         }
 
         //
@@ -104,11 +109,10 @@ namespace GadgetStore.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            CategoryModel cat = storeDB.Categories.Single(c => c.CategoryId == id);
-            storeDB.Categories.Remove(cat);
+            UserProfile user = storeDB.UserProfile.Single(c => c.UserId == id);
+            storeDB.UserProfile.Remove(user);
             storeDB.SaveChanges();
             return RedirectToAction("Index");
         }
     }
 }
-
