@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Web;
 using System.Web.Mvc;
 using GadgetStore.Models;
@@ -15,9 +16,14 @@ namespace GadgetStore.Controllers
         //
         // GET: /Manufactures/
 
-        public ActionResult Index()
+        public ActionResult Index(string ManuNameSearch)
         {
-            var manufactures = storeDB.Manufactures.ToList();
+            var manufactures = from u in storeDB.Manufactures
+                         select u;
+            if (!String.IsNullOrEmpty(ManuNameSearch))
+            {
+                manufactures = manufactures.Where(s => s.Name.Contains(ManuNameSearch));
+            }          
             return View(manufactures);
         }
 
@@ -27,7 +33,12 @@ namespace GadgetStore.Controllers
         public ActionResult Details(int id)
         {
             var manufa = storeDB.Manufactures.Find(id);
-            
+            var query =  from c in storeDB.Manufactures
+                         where c.ManufactureId.Equals(id)
+                         join i in storeDB.Items
+                         on c.ManufactureId equals i.ManufactureId
+                         select i;
+            ViewBag.manufacItems = query.ToList();
             return View(manufa);
         }
 

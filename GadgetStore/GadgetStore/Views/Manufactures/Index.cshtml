@@ -3,6 +3,11 @@
     ViewBag.Title = "Manufacture";
 }
 <h2> Manufactures </h2>
+@using (Html.BeginForm("Index", "Manufactures", FormMethod.Get))
+{
+    @:Search: <input type="search" name="ManuNameSearch" /> 
+    <input type="submit" value="Search" />
+}
 <nav id ="manufacture">
     <br />
     <ul>
