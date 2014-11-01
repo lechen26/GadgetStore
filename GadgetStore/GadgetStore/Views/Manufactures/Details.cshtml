@@ -1,23 +1,24 @@
 ﻿@model GadgetStore.Models.ManufactureModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Manufacture";
 }
-
+<nav id ="Manufactures">    
+<button type="button" onclick="window.location='@Request.UrlReferrer.AbsoluteUri'" margin-top="14px" margin-left="900px" >Back</button>
 <h2>Details</h2>
 <h3>Manufacture Name : @Model.Name</h3>
 <img src="@Url.Content(@Model.PhotoUrl)" alt ="" width="100" height="100"/> <br />
 Description: @Model.Description<br />
 
 <h2>Items by Manufacture </h2>
-<nav id ="items">
-<ul>
-    @foreach (var item in @ViewBag.manufacItems)
-    {
-       <li> @Html.ActionLink(item.Name, "Details", new { id = item.ItemId }) 
+      @foreach (var item in ViewBag.manufacItems)
+      {                    
+        <li> @Html.ActionLink((string)item.Name, "../Items/Details", new { id = (Object)item.ItemId }) 
             <img src="@Url.Content(@item.PhotoUrl)" />
-       </li>
-    }
-</ul>
+        </li>
+      }    
+    </ul>
+
+
 </nav>
 

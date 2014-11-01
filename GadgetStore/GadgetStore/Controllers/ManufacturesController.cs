@@ -15,9 +15,22 @@ namespace GadgetStore.Controllers
         //
         // GET: /Manufactures/
 
-        public ActionResult Index()
+        public ActionResult Index(string ManuNameSearch)
         {
             var manufactures = storeDB.Manufactures.ToList();
+            if ((!String.IsNullOrEmpty(ManuNameSearch)))
+            {
+                if (!String.IsNullOrEmpty(ManuNameSearch))
+                {
+                    var query = from c in storeDB.Manufactures
+                                where c.Name.Equals(ManuNameSearch)
+                                select c;
+                    manufactures = query.ToList();
+                }
+
+            }
+
+            
             return View(manufactures);
         }
 
