@@ -20,8 +20,7 @@ namespace GadgetStore.Models
         [ForeignKey("ManufactureModel")]       
         public int ManufactureId { get; set; }        
         public decimal Price { get; set; }
-        public int PurchaseAmount { get; set; }
-        public DateTime AddedAt { get; set; }                
+        public int PurchaseAmount { get; set; }        
         public virtual CategoryModel CategoryModel { get; set; }
         public virtual ManufactureModel ManufactureModel { get; set; }        
     }

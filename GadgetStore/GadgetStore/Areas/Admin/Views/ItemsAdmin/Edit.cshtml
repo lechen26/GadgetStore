@@ -1,0 +1,45 @@
+﻿@model GadgetStore.Models.ItemModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>Edit Item</h2>
+@using (Html.BeginForm())     
+{    
+    @Html.HiddenFor(model => model.ItemId)
+    @Html.HiddenFor(model => model.ManufactureId)
+    @Html.HiddenFor(model => model.CategoryId)
+    <div class="form">
+        
+            <p class="inline-field">
+                <label>Item Name</label>
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => Model.Name)
+            </p>        
+            <p class="inline-field">
+                <label>Description for Item</label>
+                @Html.TextBoxFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </p>        
+            <p class="inline-field">
+                <label>Url Path for Item's Photo</label>
+                @Html.TextBoxFor(model => model.PhotoUrl)   
+            </p>
+            <p class="inline-field">
+                <label>Purchase Amount of Item</label>
+                @Html.TextBoxFor(model => model.PurchaseAmount)   
+            </p>    
+            <p class="inline-field">
+                <label>Price for Item</label>
+                @Html.TextBoxFor(model => model.Price)   
+            </p>    
+            <div class="buttons">                
+                <input type="submit" class="button" value="submit" />              
+                <a href="@Url.Action("index", "ItemsAdmin")">
+                    <button>Cancel</button>
+                </a>        
+            </div>      
+                    
+    </div>
+  
+}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GadgetStore.Models;
+using System.Dynamic;
 
 namespace GadgetStore.Controllers
 {
@@ -13,36 +14,17 @@ namespace GadgetStore.Controllers
         //
         
         // GET: /Categories
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var categories = storeDB.Categories.ToList();
-            
+            var categories = from c in storeDB.Categories
+                             select c;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                categories = categories.Where(s => s.Name.Contains(searchString));
+            }
             return View(categories);
         }
-
-        [Authorize(Users="admin")]
-        public ActionResult IndexAdmin()
-        {
-            var categories = storeDB.Categories.ToList();
-
-            return View("/Areas/Admin/Views/categories/index.cshtml");
-        }
-
-        // GET: /Categories/Browse?category=
-        public ActionResult Browse(string category)
-        {
-
-            var query = from c in storeDB.Categories
-                        where c.Name.Equals(category)
-                        join i in storeDB.Items
-                        on c.CategoryId equals i.CategoryId
-                        select i;
-
-            return View(query.ToList());
-            //return RedirectToAction("List", "Items", query.ToList());
-        }
-
-
+       
         public ActionResult ViewPhoto(int id)
         {
             var photo = storeDB.Categories.Find(id).PhotoUrl;
@@ -53,7 +35,14 @@ namespace GadgetStore.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var query = from c in storeDB.Categories
+                        where c.CategoryId.Equals(id)
+                        join i in storeDB.Items
+                        on c.CategoryId equals i.CategoryId
+                        select i;
+            ViewBag.CategoriesItems = query.ToList();
+            var category = storeDB.Categories.Find(id);
+            return View(category);
         }
 
         //

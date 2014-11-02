@@ -7,6 +7,7 @@ namespace GadgetStore.Models
         public DbSet<CategoryModel> Categories { get; set; }
         public DbSet<ItemModel> Items { get; set; }
         public DbSet<ManufactureModel> Manufactures { get; set; }
+        public DbSet<UserProfile> UserProfile { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

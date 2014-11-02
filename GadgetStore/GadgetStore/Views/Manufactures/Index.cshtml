@@ -3,6 +3,14 @@
     ViewBag.Title = "Manufacture";
 }
 <h2> Manufactures </h2>
+<<<<<<< HEAD
+=======
+@using (Html.BeginForm("Index", "Manufactures", FormMethod.Get))
+{
+    @:Search: <input type="search" name="ManuNameSearch" /> 
+    <input type="submit" value="Search" />
+}
+>>>>>>> develop
 <nav id ="manufacture">
     <br />
     <ul>
@@ -10,8 +18,16 @@
     {
     
         <li> @Html.ActionLink(manufa.Name, "Details", new { id = manufa.ManufactureId }) 
+<<<<<<< HEAD
             <img src="@Url.Content(@manufa.PhotoUrl)" />
         </li>
     }
     </ul>
 </nav>
+=======
+            <img src="@Url.Content(@manufa.PhotoUrl)" alt ="" width="200" height="200" />
+        </li>
+    }
+    </ul>
+</nav>
+>>>>>>> develop

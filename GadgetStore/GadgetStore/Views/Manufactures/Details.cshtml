@@ -1,5 +1,6 @@
 ﻿@model GadgetStore.Models.ManufactureModel
 
+<<<<<<< HEAD
 
 @{
     ViewBag.Title = "Details";
@@ -13,4 +14,27 @@ Description: @Model.Description<br />
 
 
 
+=======
+@{
+    ViewBag.Title = "Manufacture";
+}
+<nav id ="Manufactures">    
+<a href="javascript:history.go(-1)">Go back</a>
+<h2>Details</h2>
+<h3>Manufacture Name : @Model.Name</h3>
+<img src="@Url.Content(@Model.PhotoUrl)" alt ="" width="100" height="100"/> <br />
+Description: @Model.Description<br />
+
+<h2>Items by Manufacture </h2>
+      @foreach (var item in ViewBag.manufacItems)
+      {                    
+        <li> @Html.ActionLink((string)item.Name, "../Items/Details", new { id = (Object)item.ItemId }) 
+            <img src="@Url.Content(@item.PhotoUrl)" />
+        </li>
+      }    
+    </ul>
+
+
+</nav>
+>>>>>>> develop
 

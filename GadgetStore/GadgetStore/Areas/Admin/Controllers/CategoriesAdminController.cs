@@ -1,6 +1,7 @@
 ﻿using GadgetStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,16 +11,22 @@ namespace GadgetStore.Areas.Admin.Controllers
     public class CategoriesAdminController : Controller
     {
         GadgetEntities storeDB = new GadgetEntities();
+        
         //
         // GET: /Admin/CategoriesAdmin/
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var categories = storeDB.Categories.ToList();
-
+            var categories = from c in storeDB.Categories
+                             select c;            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                categories = categories.Where(s => s.Name.Contains(searchString));
+            }
             return View(categories);
-        }
 
+        }
+       
         //
         // GET: /Admin/CategoriesAdmin/Details/5
 
@@ -32,7 +39,7 @@ namespace GadgetStore.Areas.Admin.Controllers
         // GET: /Admin/CategoriesAdmin/Create
 
         public ActionResult Create()
-        {            
+        {
             return View();
         }
 
@@ -47,42 +54,14 @@ namespace GadgetStore.Areas.Admin.Controllers
                 storeDB.Categories.Add(category);
                 storeDB.SaveChanges();
                 return RedirectToAction("Index");
-            }            
+            }
             return View(category);
         }
-
         //
         // GET: /Admin/CategoriesAdmin/Edit/5
-
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/CategoriesAdmin/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Admin/CategoriesAdmin/Delete/5
-
-        public ActionResult Delete(int id=0)
-        {
-            CategoryModel cat = storeDB.Categories.Find(id);            
+            CategoryModel cat = storeDB.Categories.Single(c => c.CategoryId == id);
             if (cat == null)
             {
                 return HttpNotFound();
@@ -91,14 +70,45 @@ namespace GadgetStore.Areas.Admin.Controllers
         }
 
         //
+        // POST: //Admin/CategoriesAdmin/Edit/5
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "CategoryId,Name,Description,PhotoUrl")] CategoryModel cat)
+        {
+            if (ModelState.IsValid)
+            {
+                storeDB.Entry(cat).State = EntityState.Modified;                
+                storeDB.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(cat);
+        }
+
+        //
+        // GET: /Admin/CategoriesAdmin/Delete/5
+
+        public ActionResult Delete(int id = 0)
+        {
+            CategoryModel cat = storeDB.Categories.Single(c => c.CategoryId == id);
+            if (cat == null)
+                //CategoryModel cat = storeDB.Categories.Find(id);            
+                if (cat == null)
+                {
+                    return HttpNotFound();
+                }
+            return View(cat);
+        }
+
+        //
         // POST: /Admin/CategoriesAdmin/Delete/5
-         [HttpPost, ActionName("Delete")]
+
+        [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            CategoryModel cat = storeDB.Categories.Find(id);
+            CategoryModel cat = storeDB.Categories.Single(c => c.CategoryId == id);
             storeDB.Categories.Remove(cat);
             storeDB.SaveChanges();
             return RedirectToAction("Index");
         }
     }
 }
+

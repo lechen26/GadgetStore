@@ -170,6 +170,7 @@
     <Compile Include="Areas\Admin\Controllers\ItemsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManufacturesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -198,6 +199,13 @@
     <Content Include="Content\Images\home-showcaseSm.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\logo.svg" />
+    <Content Include="Content\Images\Manufactures\Apple.png" />
+    <Content Include="Content\Images\Manufactures\asus.png" />
+    <Content Include="Content\Images\Manufactures\dell.png" />
+    <Content Include="Content\Images\Manufactures\google.png" />
+    <Content Include="Content\Images\Manufactures\lg.png" />
+    <Content Include="Content\Images\Manufactures\logitech.png" />
+    <Content Include="Content\Images\Manufactures\samsung.png" />
     <Content Include="Content\Images\placeholder.gif" />
     <Content Include="Content\Images\placeholder.png" />
     <Content Include="Content\Images\placeholder.svg" />
@@ -269,6 +277,8 @@
     <Content Include="Areas\Admin\Views\ItemsAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CategoriesAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ItemsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

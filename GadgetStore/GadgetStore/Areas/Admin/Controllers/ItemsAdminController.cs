@@ -1,6 +1,7 @@
 ﻿using GadgetStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,13 +11,20 @@ namespace GadgetStore.Areas.Admin.Controllers
     public class ItemsAdminController : Controller
     {
         GadgetEntities storeDB = new GadgetEntities();
+
         //
         // GET: /Admin/ItemsAdmin/
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var items = storeDB.Items.ToList();
-            return View(items);       
+            var items = from i in storeDB.Items
+                             select i;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(s => s.Name.Contains(searchString));
+            }
+            return View(items);
+
         }
 
         //
@@ -39,70 +47,68 @@ namespace GadgetStore.Areas.Admin.Controllers
         // POST: /Admin/ItemsAdmin/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ItemModel item)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                storeDB.Items.Add(item);
+                storeDB.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(item);
         }
 
         //
         // GET: /Admin/ItemsAdmin/Edit/5
-
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
-            return View();
+            ItemModel item = storeDB.Items.Single(c => c.ItemId == id);
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
         }
 
         //
-        // POST: /Admin/ItemsAdmin/Edit/5
-
+        // POST: //Admin/ItemsAdmin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit([Bind(Include = "ItemId,ManufactureId,CategoryId,Name,Description,PhotoUrl,PurchaseAmount,Price")] ItemModel item)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                storeDB.Entry(item).State = EntityState.Modified;
+                storeDB.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(item);
         }
 
         //
         // GET: /Admin/ItemsAdmin/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            return View();
+            ItemModel item = storeDB.Items.Single(c => c.ItemId == id);
+            if (item == null)                
+                if (item == null)
+                {
+                    return HttpNotFound();
+                }
+            return View(item);
         }
 
         //
         // POST: /Admin/ItemsAdmin/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            ItemModel item = storeDB.Items.Single(c => c.ItemId == id);
+            storeDB.Items.Remove(item);
+            storeDB.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
+

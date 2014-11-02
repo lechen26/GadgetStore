@@ -1,12 +1,14 @@
 ﻿@model GadgetStore.Models.CategoryModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>Edit Category</h2>
 @using (Html.BeginForm())     
 {    
-    @Html.ValidationSummary(true)
-    <div class="box">        
-        <div class="box-head">
-            <h2>Add New Category</h2>
-        </div>
-        <div class="form">
+    @Html.HiddenFor(model => model.CategoryId)
+    <div class="form">
+        
             <p class="inline-field">
                 <label>Category Name</label>
                 @Html.TextBoxFor(model => model.Name)
@@ -19,15 +21,14 @@
             </p>        
             <p class="inline-field">
                 <label>Url Path for Description's Photo</label>
-                @Html.TextBoxFor(model => model.PhotoUrl)
-                @Html.ValidationMessageFor(model => model.PhotoUrl)
-            </p>        
+                @Html.TextBoxFor(model => model.PhotoUrl)               
             <div class="buttons">                
-                <input type="submit" class="button" value="submit" />
-            </div>        
-        </div>
-   </div>           
-}        
-     <a href="@Url.Action("index", "CategoriesAdmin")">
-           <button>Cancel</button>
-        </a>    
+                <input type="submit" class="button" value="submit" />              
+                <a href="@Url.Action("index", "CategoriesAdmin")">
+                    <button>Cancel</button>
+                </a>        
+            </div>      
+                    
+    </div>
+  
+}
