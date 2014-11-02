@@ -24,13 +24,17 @@
                             <li>@Html.ActionLink("Items", "Index", "Items", new { area = "" },null)</li>
                             <li>@Html.ActionLink("Categories", "Index", "Categories", new { area = "" },null)</li>
                             <li>@Html.ActionLink("Manufactures", "Index", "Manufactures", new { area = "" },null)</li>
-                            <li>@{
-                                Html.RenderAction("CartSummary", "ShoppingCart");   
-                            }</li>
+                            
                            @if (Roles.IsUserInRole("Admin"))
                             {
                                     <li>@Html.ActionLink("Administrator", "index", "Admin", new { area = "" },null)</li>
                             }
+                            else
+                            {
+                               <li>@{
+                                Html.RenderAction("CartSummary", "ShoppingCart");   
+                                    }</li>
+                           }
                         </ul>
                     </nav>
                 </div>
