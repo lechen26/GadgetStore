@@ -55,6 +55,8 @@ namespace GadgetStore.Controllers
             //Save the Category name in a ViewBag
             ViewBag.Category = queryCategory.First();
 
+            ViewBag.OrdersAmmount = GetOrdersAmount(id);
+
             return View(item); 
         }
 
@@ -135,5 +137,31 @@ namespace GadgetStore.Controllers
                 return View();
             }
         }
+
+        private List<ItemModel> GetTopSellingItem(int count)
+        {
+            // Group the order details by album and return
+            // the albums with the highest count
+            return storeDB.Items
+                .OrderByDescending(a => a.OrderDetails.Count())
+                .Take(count)
+                .ToList();
+
+
+
+        }
+
+        private int GetOrdersAmount(int ItemIdent)
+        {
+            // Get the number of Order amount of specific product
+            var query = from c in storeDB.Items
+                        where c.ItemId.Equals(ItemIdent)
+                        select c.OrderDetails.Count();
+            var count = (int)query.First();
+
+            return count;                                              
+        }
+
+       
     }
 }
