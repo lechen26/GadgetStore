@@ -173,18 +173,26 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManufacturesController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\GadgetEntities.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\ManufactureModel.cs" />
+    <Compile Include="Models\OrderDetailModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\SampleData.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +349,8 @@
     <Content Include="Views\Categories\Browse.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Manufactures\Details.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

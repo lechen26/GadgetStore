@@ -35,6 +35,7 @@ namespace GadgetStore.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
+                MigrateShoppingCart(model.UserName);
                 return RedirectToLocal(returnUrl);
             }
 
@@ -79,6 +80,7 @@ namespace GadgetStore.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { EmailAddress = model.EmailAddress ,FirstName = model.FirstName, LastName = model.LastName, Country = model.Country, City = model.City, Address = model.Address});
                     WebSecurity.Login(model.UserName, model.Password);
+                    MigrateShoppingCart(model.UserName);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -325,6 +327,14 @@ namespace GadgetStore.Controllers
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
+        private void MigrateShoppingCart(string UserName)
+        {
+            // Associate shopping cart items with logged-in user
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            cart.MigrateCart(UserName);
+            Session[ShoppingCart.CartSessionKey] = UserName;
+        }
 
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
@@ -402,4 +412,5 @@ namespace GadgetStore.Controllers
         }
         #endregion
     }
+
 }
