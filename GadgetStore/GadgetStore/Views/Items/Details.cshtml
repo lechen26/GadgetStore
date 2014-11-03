@@ -10,11 +10,15 @@
 <img src="@Url.Content(@Model.PhotoUrl)" /> <br />
 Price : @Model.Price <br />
 Description: @Model.Description<br />
-Purchased @Model.PurchaseAmount times <br />
+Purchased @ViewBag.OrdersAmmount times<br />
 
 Manufucture : @ViewBag.ManufuctureID <br />
 @Html.ActionLink((string)@ViewBag.Category, null,null, null, new { href = Request.UrlReferrer})
 
-
+  <p class="button">
+        @Html.ActionLink("Add to cart", "AddToCart", 
+        "ShoppingCart", new { id = Model.ItemId }, "")
+      
+    </p>
 
 
