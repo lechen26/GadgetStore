@@ -23,9 +23,9 @@ namespace GadgetStore
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            OAuthWebSecurity.RegisterFacebookClient(
+                appId: "1495503840709523",
+                appSecret: "fed56a67136df7071adb04b5df309b35");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }
