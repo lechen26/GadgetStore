@@ -1,22 +1,26 @@
 ﻿@model IEnumerable<GadgetStore.Models.CategoryModel>
 
-@using (Html.BeginForm("Index", "Categories", FormMethod.Get))
-{
-    @:Search: <input type="search" name="searchString" /> 
-    <input type="submit" value="Search" />
-}
-<nav id="categories">
-    <ul>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Categories
+            </h1>
+        </div>
         @foreach (var cat in Model)
-        {            
-            <li>
-                @Html.ActionLink(cat.Name,null)                      
-                <a href="@Url.Action("Details","Categories",new { id = cat.CategoryId})">
-                   <img src="@Url.Content(@cat.PhotoUrl)" alt ="" width="200" height="200" border="5" />                   
-               </a>
-            </li>
-        }        
-        <li>@Html.ActionLink("More...", "Index", "Categories")
-        </li> 
-    </ul>
-</nav>
+        {
+            <div class="col-sm-6 col-lg-6 col-md-6">
+                <div class="portfolio-item">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                    <!--<img src="@Url.Content(@cat.PhotoUrl)" alt="" width="200" height="200">-->
+                    <div class="caption">
+                        <h4>@cat.Name</h4>
+                        <p>@Html.ActionLink("See items.", "Details", new { id = cat.CategoryId })</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.row -->
+</div>

@@ -1,50 +1,151 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<script src="~/Scripts/jquery-1.11.1.min.js"></script>
-<script src="~/Scripts/d3.min.js"></script>
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="Gadget Store">our forums</a>.
-            </p>
+
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Welcome to our Gadget Store</div>
+            <a href="/Items" class="btn btn-xl">Shop Now</a>
+            <div class="row">
+                <a href="#services" class="btn btn-circle btn-circle-white scorller page-scroll">
+                    <i class="fa fa-angle-double-down animated"></i>
+                </a>
+            </div>
         </div>
-    </section>
-}
-<h3>We suggest the following:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
-    </li>
-
-    <li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
-    </li>
-
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-    </li>
-    <h3>My Sample Chart</h3>
-    <div id ="SampleChart">
     </div>
-</ol>
+</header>
+
+<!-- Services Section -->
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Our Services</h2>
+                <h3 class="section-subheading text-muted">We are selling mobile phones, tablets and laptops.</h3>
+                <img src="../Content/Images/bg_smartphones.jpg" class="img-responsive">
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Enjoyable shopping experience</h4>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Responsive Design</h4>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Secured</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews Section -->
+<section id="review" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Our Reviews</h2>
+                <h3 class="section-subheading text-muted">Check out our new iPhone 6 review</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <video controls width="640" height="360" preload="auto" poster="../Content/Images/poster.jpg">
+                    <source src="../Content/Images/review.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Store Section -->
+<section id="store">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Our Store</h2>
+                <h3 class="section-subheading text-muted">Come to visit us and get 10% off on selected gadgets!</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <iframe width="550" height="350" frameborder="0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCs1UtnGuw__t46sThoj_SgyhAB8QjEZbY&q=Rothschild+Blvd+50,+Tel+Aviv-Yafo"> </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section id="team" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Our Team</h2>
+                <h3 class="section-subheading text-muted">Meet the team members who developed this WebApp.</h3>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="team-member">
+                    <img src="../Content/Images/Team/Chen.jpg" class="img-responsive img-circle" alt="">
+                    <h4>Chen Levi Elenberg</h4>
+                    <ul class="list-inline social-buttons">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="team-member">
+                    <img src="../Content/Images/Team/David.jpg" class="img-responsive img-circle" alt="">
+                    <h4>David Feldstein</h4>
+                    <ul class="list-inline social-buttons">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="team-member">
+                    <img src="../Content/Images/Team/Yoni.jpg" class="img-responsive img-circle" alt="">
+                    <h4>Yoni Cohen</h4>
+                    <ul class="list-inline social-buttons">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="team-member">
+                    <img src="../Content/Images/Team/Liran.jpg" class="img-responsive img-circle" alt="">
+                    <h4>Liran Polak</h4>
+                    <ul class="list-inline social-buttons">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

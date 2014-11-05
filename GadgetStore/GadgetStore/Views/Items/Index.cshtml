@@ -1,17 +1,41 @@
 ﻿@model IEnumerable<GadgetStore.Models.ItemModel>
-@{
-ViewBag.Title = "Items";
-}
-<h2> Items </h2>
-<nav id ="items">
-    <br />
-    <ul>
-    @foreach (var item in Model)
-    {
-    
-        <li> @Html.ActionLink(item.Name, "Details", new { id = item.ItemId }) 
-            <img src="@Url.Content(@item.PhotoUrl)" />
-        </li>
-    }
-    </ul>
-</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Summary          <small>Product orders amount</small>
+                <small></small>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <img class="chart-center img-responsive" src="http://placehold.it/400x400" alt="">
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="row">
+        <h1 class="page-header">
+            Items
+        </h1>
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <!--<img class="img-responsive" src="@Url.Content(@item.PhotoUrl)" />-->
+                    <img src="http://placehold.it/320x150" alt="">
+                    <div class="caption">
+                        <h4 class="pull-right">$@item.Price</h4>
+                        <h4>@item.Name</h4>
+                        <p>@Html.ActionLink("See more details.", "Details", new { id = item.ItemId })</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.row -->
+</div>

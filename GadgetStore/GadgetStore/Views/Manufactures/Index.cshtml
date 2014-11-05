@@ -1,22 +1,43 @@
 ﻿@model IEnumerable<GadgetStore.Models.ManufactureModel>
-@{
-    ViewBag.Title = "Manufacture";
-}
-<h2> Manufactures </h2>
-@using (Html.BeginForm("Index", "Manufactures", FormMethod.Get))
-{
-    @:Search: <input type="search" name="ManuNameSearch" /> 
-    <input type="submit" value="Search" />
-}
-<nav id ="manufacture">
-    <br />
-    <ul>
-    @foreach (var manufa in Model)
-    {
-    
-        <li> @Html.ActionLink(manufa.Name, "Details", new { id = manufa.ManufactureId }) 
-            <img src="@Url.Content(@manufa.PhotoUrl)" alt ="" width="200" height="200" />
-        </li>
-    }
-    </ul>
-</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Summary
+                <small>Number of items per manfacture</small>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <img class="chart-center img-responsive" src="http://placehold.it/400x400" alt="">
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Manufactures
+            </h1>
+        </div>
+        @foreach (var manufa in Model)
+        {
+            <div class="col-lg-3 col-sm-3 text-center">
+                <!--<img class="img-responsive" src="@Url.Content(@manufa.PhotoUrl)" />-->
+                <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+                <h3>
+                    @manufa.Name
+                <small></small>
+            </h3>
+            <p>@Html.ActionLink("See more details.", "Details", new { id = manufa.ManufactureId })</p>
+        </div>
+        }
+    </div>
+    <!-- /.row -->
+
+</div>
