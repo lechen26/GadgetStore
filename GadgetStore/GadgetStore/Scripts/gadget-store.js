@@ -17,3 +17,24 @@ $(function() {
         event.preventDefault();
     });
 });
+
+var topNavbar = (function () {
+    watchPageChanges();
+
+    function watchPageChanges() {
+        var url = getRelativeUrl();
+        updateNavbar(url);
+    }
+
+    function updateNavbar(url) {
+        if (url === "/") {
+            $(".navbar-default").removeClass("navbar-black");
+        } else {
+            $(".navbar-default").addClass("navbar-black");
+        }
+    }
+})();
+
+function getRelativeUrl() {
+    return location.pathname + location.search + location.hash;
+}
