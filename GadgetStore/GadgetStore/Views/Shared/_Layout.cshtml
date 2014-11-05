@@ -1,62 +1,121 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("ASP.NET MVC Music Store", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")                                                
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Items", "Index", "Items", new { area = "" },null)</li>
-                            <li>@Html.ActionLink("Categories", "Index", "Categories", new { area = "" },null)</li>
-                            <li>@Html.ActionLink("Manufactures", "Index", "Manufactures", new { area = "" },null)</li>
-                            
-                           @if (Roles.IsUserInRole("Admin"))
-                            {
-                                    <li>@Html.ActionLink("Administrator", "index", "Admin", new { area = "" },null)</li>
-                            }
-                            else
-                            {
-                               <li>@{
-                                Html.RenderAction("CartSummary", "ShoppingCart");   
-                                    }</li>
-                           }
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
+<head>
 
-        <div id="body">
-            @RenderSection("featured",required: false)
-            <section class="content-wrapper main-content clear-fix">
-                   @RenderBody()
-            </section>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css/bootstrap.css")
+    @Styles.Render("~/Content/css/font-awesome.css")
+    @Styles.Render("~/Content/css/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body id="page-top" class="index">
+
+
+    <!-- Navigation -->
+    <nav id="top-nav" class="navbar navbar-default navbar-fixed-top" data-spy="affix">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Gadget Store</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Items", "Index", "Items", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Categories", "Index", "Categories", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Manufactures", "Index", "Manufactures", new { area = "" }, null)</li>
+                    @if (Roles.IsUserInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Administrator", "index", "Admin", new { area = "" }, null)</li>
+                    }
+                    else
+                    {
+                        <li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Register", "Register", "Account", new { area = "" }, null)</li>
+
+                    <!--<li id="login">@Html.Partial("_LoginPartial")</li>-->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-       
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p><a href="http://gadgetstore.codeplex.com">gadgetstore.codeplex.com</a></p>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+
+    <ul class="nav pull-right scroll-top">
+        <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+    </ul>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Gadget Store 2014</span>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+    <!-- jQuery -->
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../Scripts/bootstrap.min.js"></script>
+
+    <!-- jQuery Plugin JavaScript -->
+    <script src="../Scripts/jquery.easing.1.3.js"></script>
+
+    <!-- Local JavaScript -->
+    <script src="../Scripts/gadget-store.js"></script>
+</body>
+
 </html>
+
+
+
+
+
+
