@@ -470,3 +470,9 @@ img::-moz-selection {
 .scroller {
     margin-top: 200px;
 }
+
+.chart-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
