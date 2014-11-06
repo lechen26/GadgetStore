@@ -134,5 +134,31 @@ namespace GadgetStore.Controllers
                 return View();
             }
         }
+
+
+
+        private List<ItemChart> ManufacturesItemsChart()
+        {
+            //Get the number of products per manufacture
+            var query = from i in storeDB.Items
+                        join m in storeDB.Manufactures on i.ManufactureId equals m.ManufactureId
+                        group m by new { m.ManufactureId, m.Name } into g
+                        select new ItemChart() { Id = g.Key.ManufactureId, Name = g.Key.Name, Count = g.Count() };
+
+
+            return query.ToList();
+
+        }
+
+
+  
+
+
+
+        public ActionResult ManufChart()
+        {
+            ViewData["ChartInfo"] = ManufacturesItemsChart();
+            return PartialView("ManufChart");
+        }
     }
 }

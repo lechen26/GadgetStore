@@ -55,7 +55,7 @@ namespace GadgetStore.Controllers
             //Save the Category name in a ViewBag
             ViewBag.Category = queryCategory.First();
 
-            ViewBag.OrdersAmmount = GetOrdersAmount(id);
+            ViewBag.SpecificOrdersAmmount = GetSpecificOrdersAmount(id);
 
             return View(item); 
         }
@@ -151,7 +151,7 @@ namespace GadgetStore.Controllers
 
         }
 
-        private int GetOrdersAmount(int ItemIdent)
+        private int GetSpecificOrdersAmount(int ItemIdent)
         {
             // Get the number of Order amount of specific product
             var query = from c in storeDB.Items
@@ -162,6 +162,24 @@ namespace GadgetStore.Controllers
             return count;                                              
         }
 
+        private List<ItemChart> ItemOrdersChart()
+        {
+            //Get the number of orders for each item.
+            var query = from i in storeDB.Items
+                        select new ItemChart() { Id = i.ItemId, Name = i.Name, Count = i.OrderDetails.Count };
+                        
+                        
+            return query.ToList();
+
+        }
+
+        public ActionResult ItemsChart()
+        {
+            ViewData["ChartInfo"] = ItemOrdersChart();
+            return PartialView("ItemsChart");
+        }
+
        
     }
+
 }

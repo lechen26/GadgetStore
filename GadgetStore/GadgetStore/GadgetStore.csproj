@@ -185,6 +185,7 @@
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\GadgetEntities.cs" />
+    <Compile Include="Models\ItemChart.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\ManufactureModel.cs" />
     <Compile Include="Models\OrderDetailModel.cs" />
