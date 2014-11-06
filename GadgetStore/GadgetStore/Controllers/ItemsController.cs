@@ -166,6 +166,7 @@ namespace GadgetStore.Controllers
         {
             //Get the number of orders for each item.
             var query = from i in storeDB.Items
+                        where (i.OrderDetails.Count > 0)
                         select new ItemChart() { Id = i.ItemId, Name = i.Name, Count = i.OrderDetails.Count };
                         
                         
