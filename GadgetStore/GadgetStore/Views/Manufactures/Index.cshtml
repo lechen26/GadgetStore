@@ -2,8 +2,6 @@
 
 <!-- Page Content -->
 <div class="container">
-
-
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
@@ -18,7 +16,6 @@
         </div>
     </div>
 
-
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
@@ -27,17 +24,18 @@
         </div>
         @foreach (var manufa in Model)
         {
-            <div class="col-lg-3 col-sm-3 text-center">
-                <!--<img class="img-responsive" src="@Url.Content(@manufa.PhotoUrl)" />-->
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
-                <h3>
-                    @manufa.Name
-                <small></small>
-            </h3>
-            <p>@Html.ActionLink("See more details.", "Details", new { id = manufa.ManufactureId })</p>
-        </div>
+            <div class="col-sm-3 col-lg-3 col-md-3">
+                <div class="portfolio-item">
+                    <img class="img-responsive" src="http://placehold.it/200x200" alt="">
+                    <!--<img class="img-responsive" src="@Url.Content(@manufa.PhotoUrl)" />-->
+                    <div class="caption">
+                        <h4>@manufa.Name</h4>
+                        <i id="btn-custom" class="btn btn-default"><i class="fa fa-tag"></i> @Html.ActionLink("More Info", "Details", new { id = manufa.ManufactureId })</i>
+                    </div>
+                    <br />
+                </div>
+            </div>
         }
     </div>
     <!-- /.row -->
-
 </div>

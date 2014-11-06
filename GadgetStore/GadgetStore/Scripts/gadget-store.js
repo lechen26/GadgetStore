@@ -26,15 +26,17 @@ var topNavbar = (function () {
         updateNavbar(url);
     }
 
+    function getRelativeUrl() {
+        return location.pathname + location.search + location.hash;
+    }
+
     function updateNavbar(url) {
         if (url === "/") {
+            console.log('Hey1');
             $(".navbar-default").removeClass("navbar-black");
         } else {
+            console.log('Hey2');
             $(".navbar-default").addClass("navbar-black");
         }
     }
 })();
-
-function getRelativeUrl() {
-    return location.pathname + location.search + location.hash;
-}

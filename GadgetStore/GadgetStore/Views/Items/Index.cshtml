@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Summary          <small>Product orders amount</small>
+                Summary<small>Product orders amount</small>
                 <small></small>
             </h1>
         </div>
@@ -31,7 +31,10 @@
                     <div class="caption">
                         <h4 class="pull-right">$@item.Price</h4>
                         <h4>@item.Name</h4>
-                        <p>@Html.ActionLink("See more details.", "Details", new { id = item.ItemId })</p>
+                        <p class="text-center">
+                            <i id="btn-custom" class="btn btn-default"><i class="fa fa-shopping-cart"></i> @Html.ActionLink("Buy Now", "AddToCart", "ShoppingCart", new { id = item.ItemId }, "")</i>
+                            <i id="btn-custom" class="btn btn-default"><i class="fa fa-info-circle"></i> @Html.ActionLink("More Info", "Details", new { id = item.ItemId })</i>
+                        </p>
                     </div>
                 </div>
             </div>
