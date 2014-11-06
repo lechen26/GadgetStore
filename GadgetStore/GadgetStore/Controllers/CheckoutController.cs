@@ -2,6 +2,9 @@
 using System.Linq;
 using System.Web.Mvc;
 using GadgetStore.Models;
+using System.Web.Security;
+using System.Web.Security;
+using WebMatrix.WebData;
 namespace GadgetStore.Controllers
 {
     [Authorize]
@@ -13,7 +16,20 @@ namespace GadgetStore.Controllers
         // GET: /Checkout/AddressAndPayment
         public ActionResult AddressAndPayment()
         {
-            return View();
+            var username = User.Identity.Name;
+            var context = new GadgetEntities();
+            var id = WebSecurity.CurrentUserId;
+            var user = context.UserProfile.SingleOrDefault(u => u.UserId == id);
+            
+            var order = new OrderModel();
+            order.LastName = user.LastName;
+            order.FirstName = user.FirstName;
+            order.Email = user.EmailAddress;
+            order.City = order.City;
+            order.Country = user.Country;
+            order.Address = user.Address;
+           
+            return View(order);
         }
 
         //
