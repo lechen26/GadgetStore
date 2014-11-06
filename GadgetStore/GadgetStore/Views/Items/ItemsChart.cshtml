@@ -62,7 +62,7 @@
                 result = prop;
         return result;
     };
-    var pieData = [
+    var DoughnutData = [
 		
 
 
@@ -81,14 +81,14 @@
     			
 		];
 
-    var pieOptions = {
+    var DoughnutOptions = {
         segmentShowStroke : false,
         animateScale : true
          // Edit: correction typo: from 'animated' to 'animation'
     }
     window.onload = function(){
         var ctx = document.getElementById("chart-area").getContext("2d");
-        window.myPie = new Chart(ctx).Pie(pieData,pieOptions);
+        window.myDoughnut = new Chart(ctx).Doughnut(DoughnutData,DoughnutOptions);
     };
 
 	</script>
