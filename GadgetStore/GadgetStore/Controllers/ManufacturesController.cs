@@ -150,11 +150,6 @@ namespace GadgetStore.Controllers
 
         }
 
-
-  
-
-
-
         public ActionResult ManufChart()
         {
             ViewData["ChartInfo"] = ManufacturesItemsChart();
