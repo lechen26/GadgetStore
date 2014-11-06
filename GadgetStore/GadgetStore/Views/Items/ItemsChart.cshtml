@@ -2,8 +2,7 @@
 <script src="@Url.Content("~/Scripts/Chart.js/Chart.min.js")"></script>
 
 <div id="canvas-holder">
-   this is test. can you see it ? 
-			<canvas id="chart-area" width="300" height="300"/>
+			<canvas id="chart-area" width="300" height="300"></canvas>
 		</div>
 
 <script>
@@ -63,9 +62,6 @@
         return result;
     };
     var DoughnutData = [
-		
-
-
 
 @foreach (var item in (List<ItemChart>)ViewData["ChartInfo"])
 {

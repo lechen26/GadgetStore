@@ -2,7 +2,7 @@
 <script src="@Url.Content("~/Scripts/Chart.js/Chart.min.js")"></script>
 
 <div id="canvas-holder">
-			<canvas id="chart-area" width="300" height="300"/>
+			<canvas id="chart-area" width="300" height="300"/></canvas>
 		</div>
 
 <script>
@@ -62,9 +62,6 @@
         return result;
     };
     var pieData = [
-		
-
-
 
 @foreach (var item in (List<ItemChart>)ViewData["ChartInfo"])
 {
