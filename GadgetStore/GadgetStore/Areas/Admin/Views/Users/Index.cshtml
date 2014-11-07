@@ -1,13 +1,8 @@
 ﻿@model IEnumerable<GadgetStore.Models.UserProfile>
-<table>
+@{Html.RenderPartial("../DashBoard/index");}
 
-@{
-    ViewBag.Title = "Users";
-}
-
-<h2>Categories Management</h2>
-     
-<p>
+<div class="col-md-9">  
+  <p>
     @using (Html.BeginForm("Index", "Users", FormMethod.Get))
     {    
         <b>Search By:</b>
@@ -21,9 +16,8 @@
         <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Users")'"/>
         </p>                      
     }
-</p>    
- 
-<table>
+  </p>     
+    <table>
     <tr>
         <td>
             @Html.DisplayNameFor(model => model.UserName)
@@ -48,41 +42,40 @@
         </td>          
     </tr>
 
-@foreach (var user in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modeluser => user.UserName)
-        </td>    
-         <td>
-            @Html.DisplayFor(modeluser => user.FirstName)
-        </td>  
-         <td>
-            @Html.DisplayFor(modeluser => user.LastName)
-        </td>  
-         <td>
-            @Html.DisplayFor(modeluser => user.Country)
-        </td>  
-        <td>
-            @Html.DisplayFor(modeluser => user.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modeluser => user.Address)
-        </td>  
-        <td>
-            @Html.DisplayFor(modelCat => user.EmailAddress)
-        </td>    
-        <td>
-          @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) |            
-          @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
-        </td>
-     </tr>
-}                  
-</table>     
-<a href="@Url.Action("index", "Admin", new { area = "" }, null)"
-    <button>Back to Admin DashBoard</button>
-</a>
-
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modeluser => user.UserName)
+            </td>    
+             <td>
+                @Html.DisplayFor(modeluser => user.FirstName)
+            </td>  
+             <td>
+                @Html.DisplayFor(modeluser => user.LastName)
+            </td>  
+             <td>
+                @Html.DisplayFor(modeluser => user.Country)
+            </td>  
+            <td>
+                @Html.DisplayFor(modeluser => user.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modeluser => user.Address)
+            </td>  
+            <td>
+                @Html.DisplayFor(modelCat => user.EmailAddress)
+            </td>    
+            <td>
+              @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) |            
+              @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
+            </td>
+         </tr>
+    }                  
+    </table>     
+</div>
+</div>
+</div>
              
 
           

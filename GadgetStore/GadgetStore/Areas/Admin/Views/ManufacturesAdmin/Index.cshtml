@@ -1,28 +1,20 @@
-﻿@model IEnumerable<GadgetStore.Models.ManufactureModel>
+﻿@model IEnumerable<GadgetStore.Models.ManufactureModel>    
+
+@{Html.RenderPartial("../DashBoard/index");}
+
+<div class="col-md-9">  
+    <p>
+        @using (Html.BeginForm("Index", "ManufacturesAdmin", FormMethod.Get))
+        {
+           <p> Search: @Html.TextBox("SearchString") <br />
+            <input type="submit" value="Filter" />  
+            <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "ManufacturesAdmin")'"/>
+           </p>                 
+        }   
+        @Html.ActionLink("Create New", "Create")
+     </p>
     <table>
-
-@{
-    ViewBag.Title = "Manufactures";
-}
-
-<h2>Manufactures Management</h2>
-    
-@using (Html.BeginForm("Index", "ManufacturesAdmin", FormMethod.Get))
-{
-   <p> Search: @Html.TextBox("SearchString") <br />
-    <input type="submit" value="Filter" />  
-    <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "ManufacturesAdmin")'"/>
-   </p>                 
-}   
- 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ManufactureId)
-        </th>  
+     <tr>  
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>  
@@ -32,36 +24,29 @@
         <th>
             @Html.DisplayNameFor(model => model.PhotoUrl)
         </th>  
+        </tr>
 
-        <th></th>
-    </tr>
-
-@foreach (var cat in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelCat => cat.ManufactureId)
-        </td>    
-        <td>
-            @Html.DisplayFor(modelCat => cat.Name)
-        </td>    
-        <td>
-            @Html.DisplayFor(modelCat => cat.Description)
-        </td>     
-        <td>
-            @Html.DisplayFor(modelCat => cat.PhotoUrl)
-        </td>     
-        <td>
-          @Html.ActionLink("Edit", "Edit", new { id=cat.ManufactureId }) |            
-          @Html.ActionLink("Delete", "Delete", new { id=cat.ManufactureId })
-        </td>
-     </tr>
-}   
-    </table>     
-      
-                    
-<a href="@Url.Action("index", "Admin", new { area = "" },null)"
-    <button>Back to Admin DashBoard</button>
-</a>
-   
-
-
+      @foreach (var cat in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelCat => cat.ManufactureId)
+            </td>    
+            <td>
+                @Html.DisplayFor(modelCat => cat.Name)
+            </td>    
+            <td>
+                @Html.DisplayFor(modelCat => cat.Description)
+            </td>     
+            <td>
+                @Html.DisplayFor(modelCat => cat.PhotoUrl)
+            </td>     
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=cat.ManufactureId }) |            
+                @Html.ActionLink("Delete", "Delete", new { id=cat.ManufactureId })
+            </td>
+         </tr>
+     }   
+    </table>                         
+</div>
+</div>
+</div>

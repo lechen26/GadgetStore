@@ -1,66 +1,59 @@
 ﻿@model IEnumerable<GadgetStore.Models.CategoryModel>
+
+@{Html.RenderPartial("../DashBoard/index");}
+
+
+<div class="col-md-9">  
+    <p>
+        @using (Html.BeginForm("Index", "CategoriesAdmin", FormMethod.Get))
+        {
+           <p> Search: @Html.TextBox("SearchString") <br />
+            <input type="submit" value="Filter" />     
+                <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "CategoriesAdmin")'"/>
+           </p>                 
+        }                
+        @Html.ActionLink("Create New", "Create")
+    </p>
     <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>  
 
-@{
-    ViewBag.Title = "Categories";
-}
-
-<h2>Categories Management</h2>
-     
-@using (Html.BeginForm("Index", "CategoriesAdmin", FormMethod.Get))
-{
-   <p> Search: @Html.TextBox("SearchString") <br />
-    <input type="submit" value="Filter" />     
-        <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "CategoriesAdmin")'"/>
-   </p>                 
-}    
+            <th></th>
+        </tr>
         
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>  
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>  
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>  
-        <th>
-            @Html.DisplayNameFor(model => model.PhotoUrl)
-        </th>  
-
-        <th></th>
-    </tr>
-
-@foreach (var cat in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelCat => cat.CategoryId)
-        </td>    
-        <td>
-            @Html.DisplayFor(modelCat => cat.Name)
-        </td>    
-        <td>
-            @Html.DisplayFor(modelCat => cat.Description)
-        </td>     
-        <td>
-            @Html.DisplayFor(modelCat => cat.PhotoUrl)
-        </td>     
-        <td>
-          @Html.ActionLink("Edit", "Edit", new { id=cat.CategoryId }) |            
-          @Html.ActionLink("Delete", "Delete", new { id=cat.CategoryId })
-        </td>
-     </tr>}   
-    </table>     
-              
-<a href="@Url.Action("index", "Admin", new { area = "" },null)"
-    <button>Back to Admin DashBoard</button>
-</a>
-
-          
+    @foreach (var cat in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelCat => cat.CategoryId)
+            </td>    
+            <td>
+                @Html.DisplayFor(modelCat => cat.Name)
+            </td>    
+            <td>
+                @Html.DisplayFor(modelCat => cat.Description)
+            </td>     
+            <td>
+                @Html.DisplayFor(modelCat => cat.PhotoUrl)
+            </td>     
+            <td>
+              @Html.ActionLink("Edit", "Edit", new { id=cat.CategoryId }) |            
+              @Html.ActionLink("Delete", "Delete", new { id=cat.CategoryId })
+            </td>
+         </tr>}   
+        </table>                      
+</div>
+</div>
+</div>       
 
 
