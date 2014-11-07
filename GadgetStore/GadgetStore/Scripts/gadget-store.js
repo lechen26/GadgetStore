@@ -32,10 +32,8 @@ var topNavbar = (function () {
 
     function updateNavbar(url) {
         if (url === "/") {
-            console.log('Hey1');
             $(".navbar-default").removeClass("navbar-black");
         } else {
-            console.log('Hey2');
             $(".navbar-default").addClass("navbar-black");
         }
     }
