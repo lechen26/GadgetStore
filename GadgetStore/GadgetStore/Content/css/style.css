@@ -572,3 +572,23 @@ button#facebook {
     background: none;
     background-image: url(../Images/facebook-connect.png);
 }
+
+.checkbox {
+    float: left;
+}
+
+#RememberMe {
+    width: 7%;
+    height: 20px;
+    margin-top: 11px;
+}
+
+.item-preview-img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.item-full-img {
+    max-width: 375px;
+    max-height: 375px;
+}

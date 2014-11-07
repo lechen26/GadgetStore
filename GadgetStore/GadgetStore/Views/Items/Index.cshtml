@@ -12,11 +12,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-
-                        <!--             <img class="chart-center img-responsive" src="http://placehold.it/400x400" alt=""> -->
              <div class="chart-center">
                 @{Html.RenderAction("ItemsChart", "Items");} 
-                
               </div>
         </div>
     </div>
@@ -30,8 +27,7 @@
         {
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="@Url.Content(@item.PhotoUrl)" />
-                    <!--<img src="http://placehold.it/320x150" alt="">-->
+                    <img class="item-preview-img img-responsive" src="@Url.Content(@item.PhotoUrl)" />
                     <div class="caption">
                         <h4 class="pull-right">$@item.Price</h4>
                         <h4>@item.Name</h4>
