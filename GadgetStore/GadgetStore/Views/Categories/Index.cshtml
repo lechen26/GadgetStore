@@ -10,10 +10,9 @@
         </div>
         @foreach (var cat in Model)
         {
-            <div class="col-sm-6 col-lg-6 col-md-6">
+            <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="portfolio-item">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                    <!--<img src="@Url.Content(@cat.PhotoUrl)" alt="" width="200" height="200">-->
+                    <div class="manfacture-logo"><img src="@Url.Content(@cat.PhotoUrl)"></div>
                     <div class="caption">
                         <h4>@cat.Name</h4>
                         <i id="btn-custom" class="btn btn-default"><i class="fa fa-tag"></i> @Html.ActionLink("See items", "Details", new { id = cat.CategoryId })</i>
