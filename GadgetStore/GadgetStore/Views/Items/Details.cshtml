@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Details <small>@Model.Name</small> 
+                @Model.Name <small>Details</small> 
             </h1>
         </div>
     </div>
@@ -17,9 +17,8 @@
         </div>
 
         <div class="col-md-8">
-            <h3>Product Details</h3>
             <ul>
-                <li>Price: @Model.Price</li>
+                <li>Price: $@Model.Price</li>
                 <li>Description: @Model.Description</li>
                 <li>Manufucture: @ViewBag.ManufuctureID</li>
                 <li>Purchased: @ViewBag.OrdersAmmount times</li>
