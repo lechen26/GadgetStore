@@ -71,6 +71,26 @@ h6 {
     transition: all .3s ease-in-out;
 }
 
+#btn-custom,
+#btn-custom a {
+    text-decoration: none;
+    border-color: #fed74f;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    font-style: normal;
+    color: #fff;
+    background-color: #fed74f;
+}
+
+#btn-custom a:hover,
+#btn-custom a:active,
+#btn-custom a:focus {
+    text-decoration: none;
+    color: #fff;
+}
+
 .btn-circle {
     width: 70px;
     height: 70px;
@@ -475,4 +495,52 @@ img::-moz-selection {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.bounce {
+  -moz-animation-duration: 2s;
+  -moz-animation-delay: 2s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+#login ul {
+    padding-top: 15px;
+}
+
+#login li {
+    display: inline-block;
+    list-style-type: none;
+    padding-right: 20px;
+    float: left;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #fff;
+}
+
+#login li>a {
+    text-decoration: none;
+}
+
+#logoutForm a {
+    text-decoration: none;
+}
+
+label {
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+}
+
+input {
+    width: 200px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
 }

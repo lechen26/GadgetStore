@@ -16,8 +16,9 @@
                     <!--<img src="@Url.Content(@cat.PhotoUrl)" alt="" width="200" height="200">-->
                     <div class="caption">
                         <h4>@cat.Name</h4>
-                        <p>@Html.ActionLink("See items.", "Details", new { id = cat.CategoryId })</p>
+                        <i id="btn-custom" class="btn btn-default"><i class="fa fa-tag"></i> @Html.ActionLink("See items", "Details", new { id = cat.CategoryId })</i>
                     </div>
+                    <br />
                 </div>
             </div>
         }

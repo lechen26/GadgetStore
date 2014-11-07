@@ -26,6 +26,10 @@ var topNavbar = (function () {
         updateNavbar(url);
     }
 
+    function getRelativeUrl() {
+        return location.pathname + location.search + location.hash;
+    }
+
     function updateNavbar(url) {
         if (url === "/") {
             $(".navbar-default").removeClass("navbar-black");
@@ -34,7 +38,3 @@ var topNavbar = (function () {
         }
     }
 })();
-
-function getRelativeUrl() {
-    return location.pathname + location.search + location.hash;
-}
