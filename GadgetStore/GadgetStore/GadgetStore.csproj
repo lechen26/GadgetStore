@@ -203,6 +203,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\modern-business.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\Categories\accessories.png" />
@@ -285,7 +286,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Images\Thumbs.db" />
-    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Web.config" />
     <Content Include="Areas\Admin\Views\CategoriesAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DashBoard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ItemsAdmin\Index.cshtml" />
@@ -307,6 +308,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminPartialView.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\_DashBoardPartial.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
