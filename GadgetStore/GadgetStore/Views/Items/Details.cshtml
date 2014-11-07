@@ -1,15 +1,5 @@
 ﻿@model GadgetStore.Models.ItemModel
 
-<div id="fb-root"></div>
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
 <!-- Page Content -->
 <div class="container">
 
@@ -37,7 +27,7 @@
                 <li>Category: @Html.ActionLink((string)@ViewBag.Category, null, null, null, new { href = Request.UrlReferrer })</li>
             </ul>
             <!-- blat in testing... -->
-            <i id="btn-custom" class="btn btn-default"><i class="fa fa-shopping-cart"></i> @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ItemId }, "")</i><i style="margin-left:10px;" class="fb-share-button" data-layout="button_count" data-href=@Html.ActionLink(" ", "Details", "Items", new { id = Model.ItemId }, "")></i>
+            <i id="btn-custom" class="btn btn-default"><i class="fa fa-shopping-cart"></i> @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ItemId }, "")</i> <i class="facebook-share">@LinkShare.GetHtml(" ", linkSites: new[] { LinkShareSite.Facebook })</i>
         </div>
     </div>
 </div>

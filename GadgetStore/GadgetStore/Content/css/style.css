@@ -545,31 +545,30 @@ input {
     *overflow: hidden;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
-button.social-wrap {
-    padding-right: 45px;
-    height: 35px;
-    background: none;
-    border: none;
-    display: block;
-    background-size: 35px 35px;
-    background-position: right center;
-    background-repeat: no-repeat;
-    border-radius: 4px;
-    color: white;
-    font-family:"Merriweather Sans", sans-serif;
-    font-size: 14px;
-    margin-bottom: 15px;
-    width: 205px;
-    border-bottom: 2px solid transparent;
-    border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
-    box-shadow: 0 4px 2px -2px gray;
-    text-shadow: rgba(0, 0, 0, .5) -1px -1px 0;
+.facebook-connect {
+    margin-top: -25px;
+    display: inline-block;
+    height: 30px;
+    width: 195px;
+}
+
+.facebook-share {
+    background-image: url(../Images/facebook-share.png);
+    margin-top: -25px;
+    display: inline-block;
+    height: 30px;
+    width: 100px;
+}
+
+#body > section > div > div:nth-child(2) > div.col-md-8 > i.facebook-share > a > img {
+    opacity: 0 !important;
+    height: 30px !important;
+    width: 100px !important;
+    margin-bottom: 3px !important;
 }
 
 button#facebook {
-    border-color: #2d5073;
-    background-color: #3b5998;
-    background-image: url(../Images/facebook-icon.png);
+    border: 0;
+    background: none;
+    background-image: url(../Images/facebook-connect.png);
 }
