@@ -16,6 +16,15 @@
                 @{Html.RenderAction("ItemsChart", "Items");} 
               </div>
         </div>
+        <div>
+            @using (Html.BeginForm("Index", "Items", FormMethod.Get))
+            {
+               <p> Search: @Html.TextBox("SearchString") <br />
+                <input type="submit" value="Filter" />     
+                <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Items")    '"/>
+               </p>                 
+            }
+        </div>                
     </div>
 
     <!-- Header -->
