@@ -10,15 +10,13 @@
             </h1>
         </div>
     </div>
+
     <div class="row">
         <div class="col-lg-12">
-             <div class="chart-center">
-                @{Html.RenderAction("ItemsChart", "Items");} 
-              </div>
+            <div class="chart-center">
+                @{Html.RenderAction("ItemsChart", "Items");}
+            </div>
         </div>
-        <div>
-            @{Html.RenderAction("SearchPartial", "Items");}
-        </div>                
     </div>
 
     <!-- Header -->
@@ -26,6 +24,11 @@
         <h1 class="page-header">
             Items
         </h1>
+        <div class="col-lg-12">
+            <div>
+                @{Html.RenderAction("SearchPartial", "Items");}
+            </div>
+        </div>
         @foreach (var item in Model)
         {
             <div class="col-sm-4 col-lg-4 col-md-4">
