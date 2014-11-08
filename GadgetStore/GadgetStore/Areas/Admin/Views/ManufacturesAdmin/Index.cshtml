@@ -9,9 +9,9 @@
                <b>Search:   </b> @Html.TextBox("SearchString")
                <input class="btn btn-primary" type="submit" value="Filter" />  
                <input class="btn btn-primary" type="button" value="Clear" onclick="location.href='@Url.Action("Index", "ManufacturesAdmin")'" />
+               <input class="btn btn-info" type="button" value="Create New" onclick="location.href='@Url.Action("Create", "ManufacturesAdmin")'" /> 
            </div>                 
         }   
-    <i class="admin-link">@Html.ActionLink("Create New", "Create")</i>
     <table class="admin-table">
         <tr>
             <th>

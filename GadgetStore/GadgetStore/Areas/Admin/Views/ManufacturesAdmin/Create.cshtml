@@ -1,7 +1,7 @@
 ﻿@model GadgetStore.Models.ManufactureModel
 
 @{Html.RenderPartial("../DashBoard/index");}
-<div class="col-md-9">  
+<div class="col-md-12">  
         @using (Html.BeginForm())     
         {    
             @Html.ValidationSummary(true) 
@@ -23,9 +23,9 @@
                     </div>
                     <div class="buttons">
                         <input type="button" class="btn btn-primary" style="margin-bottom: 10px;" value="preview" />
-                        <input type="submit" class="btn btn-primary btn-save" value="create" />
+                        <input type="submit" class="btn btn-success" value="create" />
                         <form action="@Url.Action("index", "ManufacturesAdmin", new { area = "" })">
-                            <input type="submit" class="btn btn-primary btn-cancel" value="cancel">
+                            <input type="submit" class="btn btn-danger" value="cancel">
                         </form>
                     </div>
             </div>                  
