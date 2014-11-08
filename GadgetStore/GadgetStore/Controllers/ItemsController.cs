@@ -101,7 +101,7 @@ namespace GadgetStore.Controllers
             //Save the Category name in a ViewBag
             ViewBag.Category = queryCategory.First();
 
-            ViewBag.SpecificOrdersAmmount = GetSpecificOrdersAmount(id);
+            ViewBag.OrdersAmount = GetSpecificOrdersAmount(id);
             return View(item); 
         }
 
