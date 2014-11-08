@@ -637,6 +637,17 @@ button#facebook {
     margin-left: 150px;
 }
 
+.admin-form h4 {
+    text-transform: none;
+    color: #f0744a;
+}
+
+.admin-form h6 {
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: none;
+}
+
 th, td {
     overflow: hidden;
     width: 150px;
