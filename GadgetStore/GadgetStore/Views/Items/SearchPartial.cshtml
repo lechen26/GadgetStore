@@ -12,7 +12,7 @@
                         {
                             CatListItems.Add(new SelectListItem { Text = @catitem.Name, Value = @catitem.Name });
                         }
-                                @Html.DropDownList("category", CatListItems, "Categories", new { @class = "search-filters" })
+                                @Html.DropDownList("category", CatListItems, "Categories", new { @class = "search-filters btn btn-default" })
 
                         var ManListItems = new List<SelectListItem>();
                         foreach (var manitem in (List<ManufactureModel>)ViewData["ManSearchList"])
@@ -20,7 +20,7 @@
                             { ManListItems.Add(new SelectListItem { Text = @manitem.Name, Value = @manitem.Name }); }
                         }
 
-                        {@Html.DropDownList("manufacture", ManListItems, "Manufacture", new { @class = "search-filters" })}
+                        {@Html.DropDownList("manufacture", ManListItems, "Manufacture", new { @class = "search-filters btn btn-default" })}
                     }
                 </div>
 

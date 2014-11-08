@@ -43,7 +43,3 @@ $(function () {
     var currentAdminFormID = $('form.admin-form').attr('id');
     if (currentAdminFormID) {$('li#' + currentAdminFormID).addClass('active');}
 });
-
-$(function () {
-    $('select.search-filters').addClass('btn btn-default');
-});
