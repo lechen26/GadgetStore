@@ -15,10 +15,15 @@ namespace GadgetStore.Controllers
         //
         // GET: /Items/
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var items = storeDB.Items.ToList();
-            return View(items);            
+            var items = from i in storeDB.Items
+                        select i;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(s => s.Name.Contains(searchString));
+            }
+            return View(items);           
         }
 
         public ActionResult Browse(string category)
