@@ -1,52 +1,56 @@
-﻿@model IEnumerable<GadgetStore.Models.ManufactureModel>    
+﻿@model IEnumerable<GadgetStore.Models.ManufactureModel>
 
 @{Html.RenderPartial("../DashBoard/index");}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Index", "ManufacturesAdmin", FormMethod.Get, new { id = "manufactures-admin", @class = "admin-form" }))
+            {
+                <div>
+                    <b>Search:   </b> @Html.TextBox("SearchString")
+                    <input class="btn btn-primary" type="submit" value="Filter" />
+                    <input class="btn btn-primary" type="button" value="Clear" onclick="location.href='@Url.Action("Index", "ManufacturesAdmin")'" />
+                    <input class="btn btn-info" type="button" value="Create New" onclick="location.href='@Url.Action("Create", "ManufacturesAdmin")'" />
+                </div>
+            }
+            <table class="admin-table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ManufactureId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhotoUrl)
+                    </th>
+                </tr>
 
-<div class="col-md-12">  
-        @using (Html.BeginForm("Index", "ManufacturesAdmin", FormMethod.Get, new { id = "manufactures-admin", @class = "admin-form" }))
-        {
-           <div>
-               <b>Search:   </b> @Html.TextBox("SearchString")
-               <input class="btn btn-primary" type="submit" value="Filter" />  
-               <input class="btn btn-primary" type="button" value="Clear" onclick="location.href='@Url.Action("Index", "ManufacturesAdmin")'" />
-               <input class="btn btn-info" type="button" value="Create New" onclick="location.href='@Url.Action("Create", "ManufacturesAdmin")'" /> 
-           </div>                 
-        }   
-    <table class="admin-table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoUrl)
-            </th>
-        </tr>
-
-        @foreach (var cat in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelCat => cat.ManufactureId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelCat => cat.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelCat => cat.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelCat => cat.PhotoUrl)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = cat.ManufactureId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = cat.ManufactureId })
-                </td>
-            </tr>
-        }
-    </table>
-</div>
-</div>
+                @foreach (var cat in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelCat => cat.ManufactureId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelCat => cat.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelCat => cat.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelCat => cat.PhotoUrl)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = cat.ManufactureId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = cat.ManufactureId })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 </div>

@@ -1,83 +1,85 @@
 ﻿@{Html.RenderPartial("../DashBoard/index");}
 @model IEnumerable<GadgetStore.Models.UserProfile>
 
-<div class="col-md-12">
-    @using (Html.BeginForm("Index", "Users", FormMethod.Get, new { id = "users-admin", @class = "admin-form" }))
-    {
-        <b>Search By:</b>
-        @Html.RadioButton("searchBy", "UserName", true);<text>UserName</text>
-        @Html.RadioButton("searchBy", "FirstName");<text>First Name</text>
-        @Html.RadioButton("searchBy", "LastName");<text>Last Name</text>
-        @Html.RadioButton("searchBy", "County");<text>Country</text>
-        @Html.RadioButton("searchBy", "City");<text>City</text>
-        
-        <br /><br />
-        <div>
-            <b>Search:   </b>@Html.TextBox("SearchString")
-            <input class="btn btn-primary" type="submit" value="Filter" />
-            <input class="btn btn-primary" type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Users")'" />
-        </div>
-    }
-    <table class="admin-table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailAddress)
-            </th>
-        </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Index", "Users", FormMethod.Get, new { id = "users-admin", @class = "admin-form" }))
+            {
+                <b>Search By:</b>
+                @Html.RadioButton("searchBy", "UserName", true);<text>UserName</text>
+                @Html.RadioButton("searchBy", "FirstName");<text>First Name</text>
+                @Html.RadioButton("searchBy", "LastName");<text>Last Name</text>
+                @Html.RadioButton("searchBy", "County");<text>Country</text>
+                @Html.RadioButton("searchBy", "City");<text>City</text>
 
-        @foreach (var user in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modeluser => user.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modeluser => user.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modeluser => user.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modeluser => user.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modeluser => user.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modeluser => user.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelCat => user.EmailAddress)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
-                </td>
-            </tr>
-        }
-    </table>
+                <br /><br />
+                <div>
+                    <b>Search:   </b>@Html.TextBox("SearchString")
+                    <input class="btn btn-primary" type="submit" value="Filter" />
+                    <input class="btn btn-primary" type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Users")'" />
+                </div>
+            }
+            <table class="admin-table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmailAddress)
+                    </th>
+                </tr>
+
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modeluser => user.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modeluser => user.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modeluser => user.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modeluser => user.Country)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modeluser => user.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modeluser => user.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelCat => user.EmailAddress)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 </div>
 
 
-
-          
 
 

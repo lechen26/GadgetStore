@@ -633,7 +633,6 @@ button#facebook {
 .admin-table,
 .admin-link {
     margin: 0 auto;
-    width: 80%;
     margin-top: 22px;
 }
 
@@ -647,6 +646,10 @@ button#facebook {
     font-weight: 500;
     font-size: 12px;
     text-transform: none;
+}
+
+.admin-table {
+    float: left;
 }
 
 th, td {

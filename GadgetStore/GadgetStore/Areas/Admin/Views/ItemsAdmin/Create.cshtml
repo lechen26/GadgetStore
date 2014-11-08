@@ -1,33 +1,36 @@
 ﻿@model GadgetStore.Models.ItemModel
 @{Html.RenderPartial("../DashBoard/index");}
 
-<div class="col-md-12">  
-        @using (Html.BeginForm())
-        {        
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm())
+            {
             <div class="admin-form">
-                    <div class="form-group">
-                        <label>Name</label>
-                        @Html.TextBoxFor(model => model.Name)
-                        @Html.ValidationMessageFor(model => Model.Name)
-                        </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        @Html.TextBoxFor(model => model.Description)
-                        @Html.ValidationMessageFor(model => model.Description)
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        @Html.TextBoxFor(model => model.Price)
-                        @Html.ValidationMessageFor(model => Model.Price)
-                    </div>
-                    <div class="buttons">
-                        <input type="button" class="btn btn-primary" style="margin-bottom: 10px;" value="preview" />
-                        <input type="submit" class="btn btn-success" value="create" />
-                        <form action="@Url.Action("index", "ItemsAdmin", new { area = "" })">
-                            <input type="submit" class="btn btn-danger" value="cancel">
-                        </form>
-                    </div>
-            </div> 
-        }
+                <div class="form-group">
+                    <label>Name</label>
+                    @Html.TextBoxFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => Model.Name)
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    @Html.TextBoxFor(model => model.Description)
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    @Html.TextBoxFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => Model.Price)
+                </div>
+                <div class="buttons">
+                    <input type="button" class="btn btn-primary" style="margin-bottom: 10px;" value="preview" />
+                    <input type="submit" class="btn btn-success" value="create" />
+                    <form action="@Url.Action("index", "ItemsAdmin", new { area = "" })">
+                        <input type="submit" class="btn btn-danger" value="cancel">
+                    </form>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
 </div>
-
