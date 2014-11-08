@@ -3,16 +3,16 @@
 @{Html.RenderPartial("../DashBoard/index");}
 
 
-<div class="col-md-9">  
+<div class="col-md-12">  
         @using (Html.BeginForm("Index", "CategoriesAdmin", FormMethod.Get, new { id = "categories-admin", @class = "admin-form" }))
         {
            <div> 
                <b>Search:   </b> @Html.TextBox("SearchString")
                <input class="btn btn-primary" type="submit" value="Filter" />     
                <input class="btn btn-primary" type="button" value="Clear" onclick="location.href='@Url.Action("Index", "CategoriesAdmin")'" />
+               <input class="btn btn-info" type="button" value="Create New" onclick="location.href='@Url.Action("Create", "CategoriesAdmin")'" /> 
            </div>                  
-        }
-    <i class="admin-link">@Html.ActionLink("Create New", "Create") </i>         
+        }        
     <table class="admin-table">
         <tr>
             <th>

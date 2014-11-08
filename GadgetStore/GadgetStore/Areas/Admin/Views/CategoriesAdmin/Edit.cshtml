@@ -3,7 +3,7 @@
 @{Html.RenderPartial("../DashBoard/index");}
 
 
-<div class="col-md-9">  
+<div class="col-md-12">  
         @using (Html.BeginForm())     
         {    
             @Html.HiddenFor(model => model.CategoryId)
@@ -23,9 +23,9 @@
                         @Html.TextBoxFor(model => model.PhotoUrl)
                     </div>
                     <div class="buttons">
-                        <input type="submit" class="btn btn-primary btn-save" value="save" />
+                        <input type="submit" class="btn btn-success" value="save" />
                         <form action="@Url.Action("index", "CategoriesAdmin", new { area = "" })">
-                            <input type="submit" class="btn btn-primary btn-cancel" value="cancel">
+                            <input type="submit" class="btn btn-danger" value="cancel">
                         </form>
                     </div>
             </div>

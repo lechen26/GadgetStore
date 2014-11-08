@@ -632,14 +632,15 @@ button#facebook {
 .admin-form,
 .admin-table,
 .admin-link {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 150px;
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 22px;
 }
 
 .admin-form h4 {
     text-transform: none;
-    color: #f0744a;
+    font-size: 20px;
+    color: #c9302c;
 }
 
 .admin-form h6 {
@@ -653,24 +654,7 @@ th, td {
     width: 150px;
 }
 
-.btn-save {
+.admin-form .buttons .btn {
     display: block;
     margin-bottom: 10px;
-    background-color: #8fe18f;
-    border-color: #8fe18f;
-}
-
-.btn-save:hover {
-    background-color: #80ca80;
-    border-color: #80ca80;
-}
-
-.btn-cancel {
-    background-color: #f0744a;
-    border-color: #f0744a;
-}
-
-.btn-cancel:hover {
-    background-color: #d86842;
-    border-color: #d86842;
 }
