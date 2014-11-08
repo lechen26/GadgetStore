@@ -8,6 +8,27 @@
                 Categories
             </h1>
         </div>
+
+        @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+        {
+                <div class="container" id="search-bar">
+                    <div class="row">
+                        <div class="col-xs-8 col-xs-offset-2">
+                            <div class="input-group">
+                                <input style="top:0; left:-1px;" type="text" class="form-control" name="searchString" placeholder="Search..." id="searchString">
+
+                                <span style="left: -1px;" class="input-group-btn">
+                                    <button class="btn btn-info" type="submit"><span class="fa fa-search"></span></button>
+                                </span>
+                                <span style="left: -1px;" class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" onclick="location.href='@Url.Action("Index", "Categories")'"><span class="fa fa-close"></span></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        }
+
         @foreach (var cat in Model)
         {
             <div class="col-sm-4 col-lg-4 col-md-4">
