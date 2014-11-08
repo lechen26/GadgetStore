@@ -2,48 +2,48 @@
 
 @{Html.RenderPartial("../DashBoard/index");}
 
-<div class="col-md-9">  
-    <p>      
-        @using (Html.BeginForm("Index", "ItemsAdmin", FormMethod.Get))
+<div class="col-md-12">      
+        @using (Html.BeginForm("Index", "ItemsAdmin", FormMethod.Get, new { id = "items-admin", @class = "admin-form" }))
         {
-            <p> Search: @Html.TextBox("SearchString") <br />
-            <input type="submit" value="Filter" />
-            <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "ItemsAdmin")'"/>            
-            </p>                 
+            <div> 
+                <b>Search:   </b> @Html.TextBox("SearchString")
+                <input class="btn btn-primary" type="submit" value="Filter" />
+                <input class="btn btn-primary" type="button" value="Clear" onclick="location.href='@Url.Action("Index", "ItemsAdmin")'" />            
+            </div>                 
         }       
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table>
+    <i class="admin-link">@Html.ActionLink("Create New", "Create")</i>
+    <table class="admin-table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ItemId)
-            </th>  
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>  
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
-            </th>         
+            </th>
         </tr>
 
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemId)
-            </td>    
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>    
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>    
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ItemId }) |            
-                @Html.ActionLink("Delete", "Delete", new { id=item.ItemId })
-            </td>
-        </tr>
-    }
-    </table>  
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 </div>
 </div>

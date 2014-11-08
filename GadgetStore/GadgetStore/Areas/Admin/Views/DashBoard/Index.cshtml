@@ -4,30 +4,26 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="container">
-        <!-- Page Heading/Breadcrumbs -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Admin
-                    <small>dashboard</small>
-                </h1>
-                @*
-                <ol class="breadcrumb">
-                    <li><a href="../Admin/Users">Home</a>
-                    </li>
-                    <li class="active">Users</li>
-                </ol>*@
-            </div>
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Admin
+                <small>Dashboard</small>
+            </h1>
         </div>
-        <!-- /.row -->
-    
-        <!-- Content Row -->
-        <div class="row">
-            <!-- Sidebar Column -->
-            <div class="col-md-3">
-                <div class="list-group">                      
-                    <a href="~/Admin/Users" class="list-group-item">Users Management</a>                
-                    <a href="~/Admin/ItemsAdmin" class="list-group-item">Items</a>
-                    <a href="~/Admin/ManufacturesAdmin" class="list-group-item">Manufactures</a>
-                    <a href="~/Admin/CategoriesAdmin" class="list-group-item">Categories</a>                 
-                </div>
-            </div>
+    </div>
+    <!-- /.row -->
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-12">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li class="tab-header" id="users-admin" role="presentation"><a href="~/Admin/Users"><i class="fa fa-user"></i> Users Management</a></li>
+                <li class="tab-header" id="items-admin" role="presentation"><a href="~/Admin/ItemsAdmin"><i class="fa fa-cubes"></i> Items</a></li>
+                <li class="tab-header" id="categories-admin" role="presentation"><a href="~/Admin/CategoriesAdmin"><i class="fa fa-bars"></i> Categories</a></li>
+                <li class="tab-header" id="manufactures-admin" role="presentation"><a href="~/Admin/ManufacturesAdmin"><i class="fa fa-tags"></i> Manufactures</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

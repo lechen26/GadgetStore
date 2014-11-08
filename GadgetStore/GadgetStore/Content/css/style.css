@@ -577,10 +577,16 @@ button#facebook {
     float: left;
 }
 
-#RememberMe {
+#RememberMe,
+#searchBy {
     width: 7%;
     height: 20px;
     margin-top: 11px;
+    margin-right: -24px;
+}
+
+#searchBy {
+    margin-left: -14px;
 }
 
 .preview-img {
@@ -611,4 +617,49 @@ button#facebook {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.tab-header a {
+    font-weight: 800;
+    font-size: 20px;
+    color: #999;
+}
+
+.tab-header.active a {
+    color: #fed136 !important;
+}
+
+.admin-form,
+.admin-table,
+.admin-link {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 150px;
+}
+
+th, td {
+    overflow: hidden;
+    width: 150px;
+}
+
+.btn-save {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #8fe18f;
+    border-color: #8fe18f;
+}
+
+.btn-save:hover {
+    background-color: #80ca80;
+    border-color: #80ca80;
+}
+
+.btn-cancel {
+    background-color: #f0744a;
+    border-color: #f0744a;
+}
+
+.btn-cancel:hover {
+    background-color: #d86842;
+    border-color: #d86842;
 }
