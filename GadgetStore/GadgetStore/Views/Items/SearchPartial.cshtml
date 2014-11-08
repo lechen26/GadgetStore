@@ -1,27 +1,49 @@
 ﻿@using GadgetStore.Models
 @using (Html.BeginForm("Index", "Items", FormMethod.Get))
-            {
-               <p> ItemName: @Html.TextBox("searchString") <br />
-                       @{
+{    
+<div class="container" id="search-bar">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="input-group">
+                <div class="input-group-btn" style="font-size:12px;">
+                    @{
+                        var CatListItems = new List<SelectListItem>();
+                        foreach (var catitem in (List<CategoryModel>)ViewData["CatSearchList"])
+                        {
+                            CatListItems.Add(new SelectListItem { Text = @catitem.Name, Value = @catitem.Name });
+                        }
+                                @Html.DropDownList("category", CatListItems, "Categories", new { @class = "search-filters" })
 
-                            var CatListItems = new List<SelectListItem>();
-                            foreach (var catitem in (List<CategoryModel>)ViewData["CatSearchList"])
-                            {
-                                CatListItems.Add(new SelectListItem { Text = @catitem.Name, Value = @catitem.Name });
-                            }
-                            @Html.DropDownList("category", CatListItems,"Categories")
+                        var ManListItems = new List<SelectListItem>();
+                        foreach (var manitem in (List<ManufactureModel>)ViewData["ManSearchList"])
+                        {
+                            { ManListItems.Add(new SelectListItem { Text = @manitem.Name, Value = @manitem.Name }); }
+                        }
 
-                           var ManListItems = new List<SelectListItem>();
-                            foreach (var manitem in (List<ManufactureModel>)ViewData["ManSearchList"])
-                            {
-                                    {ManListItems.Add(new SelectListItem { Text = @manitem.Name, Value = @manitem.Name });}
-                            }
-                                                                    
-                            {@Html.DropDownList("manufacture", ManListItems,"Manufacture")}
-                       }  
+                        {@Html.DropDownList("manufacture", ManListItems, "Manufacture", new { @class = "search-filters" })}
+                    }
+                </div>
 
-                   Price: @Html.TextBox("price") <br />
-                <input type="submit" value="Filter" />     
-                <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Items")'"/>
-               </p>                                               
-            }
+                <span style="" class="input-group-btn">
+                    <input style="top:0; width:100px;" type="text" class="form-control" name="price" placeholder="Max Price" id="price">
+                </span>
+
+                <input style="top:0; left:-1px;" type="text" class="form-control" name="searchString" placeholder="Search..." id="searchString">
+                
+                <span style="left: -1px;" class="input-group-btn">
+                    <button class="btn btn-info" type="submit"><span class="fa fa-search"></span></button>
+                </span>
+                <span style="left: -1px;" class="input-group-btn">
+                    <button class="btn btn-danger" type="button" onclick="location.href='@Url.Action("Index", "Items")'"><span class="fa fa-close"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+                                                  
+}
+
+
+
