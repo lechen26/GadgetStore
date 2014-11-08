@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace GadgetStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesAdminController : Controller
     {
         GadgetEntities storeDB = new GadgetEntities();

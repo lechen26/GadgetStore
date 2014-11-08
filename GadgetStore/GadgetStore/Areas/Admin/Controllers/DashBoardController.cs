@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace GadgetStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DashBoardController : Controller
     {
         //
