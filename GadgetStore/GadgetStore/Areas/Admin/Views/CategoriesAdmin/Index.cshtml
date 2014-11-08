@@ -4,54 +4,54 @@
 
 
 <div class="col-md-9">  
-    <p>
-        @using (Html.BeginForm("Index", "CategoriesAdmin", FormMethod.Get))
+        @using (Html.BeginForm("Index", "CategoriesAdmin", FormMethod.Get, new { id = "categories-admin", @class = "admin-form" }))
         {
-           <p> Search: @Html.TextBox("SearchString") <br />
-            <input type="submit" value="Filter" />     
-                <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "CategoriesAdmin")'"/>
-           </p>                 
-        }                
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table>
+           <div> 
+               <b>Search:   </b> @Html.TextBox("SearchString")
+               <input class="btn btn-primary" type="submit" value="Filter" />     
+               <input class="btn btn-primary" type="button" value="Clear" onclick="location.href='@Url.Action("Index", "CategoriesAdmin")'" />
+           </div>                  
+        }
+    <i class="admin-link">@Html.ActionLink("Create New", "Create") </i>         
+    <table class="admin-table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.CategoryId)
-            </th>  
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>  
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
-            </th>  
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.PhotoUrl)
-            </th>  
+            </th>
 
             <th></th>
         </tr>
-        
-    @foreach (var cat in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelCat => cat.CategoryId)
-            </td>    
-            <td>
-                @Html.DisplayFor(modelCat => cat.Name)
-            </td>    
-            <td>
-                @Html.DisplayFor(modelCat => cat.Description)
-            </td>     
-            <td>
-                @Html.DisplayFor(modelCat => cat.PhotoUrl)
-            </td>     
-            <td>
-              @Html.ActionLink("Edit", "Edit", new { id=cat.CategoryId }) |            
-              @Html.ActionLink("Delete", "Delete", new { id=cat.CategoryId })
-            </td>
-         </tr>}   
-        </table>                      
+
+        @foreach (var cat in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelCat => cat.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelCat => cat.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelCat => cat.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelCat => cat.PhotoUrl)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = cat.CategoryId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = cat.CategoryId })
+                </td>
+            </tr>}
+    </table>                      
 </div>
 </div>
 </div>       
