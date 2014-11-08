@@ -15,15 +15,53 @@ namespace GadgetStore.Controllers
         //
         // GET: /Items/
 
-        public ActionResult Index(string searchString)
-        {
+        public ActionResult Index(string searchString, string category, string manufacture, string price)
+        {   
+            var pri=0M;      
+            if (!String.IsNullOrEmpty(price))
+                pri = Decimal.Parse(price);
+
+            //Generic List of Items
             var items = from i in storeDB.Items
+                        where (decimal)i.Price > pri
                         select i;
+
+            //Select Items according to Search String
             if (!String.IsNullOrEmpty(searchString))
             {
-                items = items.Where(s => s.Name.Contains(searchString));
+                items = from i in storeDB.Items
+                        where i.Name.Contains(searchString) && (decimal)i.Price > pri
+                            select i;
             }
-            return View(items);           
+
+            //Search Items according to Category (and searchString if applied)
+            if (!String.IsNullOrEmpty(category))
+            {
+                items = from i in storeDB.Items
+                        join c in storeDB.Categories on i.CategoryId equals c.CategoryId
+                        where i.Name.Contains(searchString) && c.Name.Contains(category) && i.Price > pri
+                        select i;
+            }
+
+            //Search Items according to Manufacture (and searchString if applied)
+            if (!String.IsNullOrEmpty(manufacture))
+            {
+                items = from i in storeDB.Items
+                        join m in storeDB.Manufactures on i.ManufactureId equals m.ManufactureId
+                        where i.Name.Contains(searchString) && m.Name.Contains(manufacture) && i.Price > pri
+                        select i;
+            }
+          
+            //Search Items according to Manufacture and Category (and searchString if applied)
+            if (!String.IsNullOrEmpty(manufacture))
+            {
+                items = from i in storeDB.Items
+                        join m in storeDB.Manufactures on i.ManufactureId equals m.ManufactureId
+                        join c in storeDB.Categories on i.CategoryId equals c.CategoryId
+                        where i.Name.Contains(searchString) && m.Name.Contains(manufacture) && c.Name.Contains(category) && i.Price > pri
+                        select i;
+            }         
+            return View(items);
         }
 
         public ActionResult Browse(string category)
