@@ -17,20 +17,23 @@ namespace GadgetStore.Controllers
 
         public ActionResult Index(string searchString, string category, string manufacture, string price)
         {   
-            var pri=0M;      
+            var pri=0M;
             if (!String.IsNullOrEmpty(price))
                 pri = Decimal.Parse(price);
+            //Define very High price if not specified
+            else
+                pri = 1000000;
 
             //Generic List of Items
             var items = from i in storeDB.Items
-                        where (decimal)i.Price > pri
+                        where (decimal)i.Price < pri
                         select i;
 
             //Select Items according to Search String
             if (!String.IsNullOrEmpty(searchString))
             {
                 items = from i in storeDB.Items
-                        where i.Name.Contains(searchString) && (decimal)i.Price > pri
+                        where i.Name.Contains(searchString) && (decimal)i.Price < pri
                             select i;
             }
 
@@ -39,7 +42,7 @@ namespace GadgetStore.Controllers
             {
                 items = from i in storeDB.Items
                         join c in storeDB.Categories on i.CategoryId equals c.CategoryId
-                        where i.Name.Contains(searchString) && c.Name.Contains(category) && i.Price > pri
+                        where i.Name.Contains(searchString) && c.Name.Contains(category) && i.Price < pri
                         select i;
             }
 
@@ -48,7 +51,7 @@ namespace GadgetStore.Controllers
             {
                 items = from i in storeDB.Items
                         join m in storeDB.Manufactures on i.ManufactureId equals m.ManufactureId
-                        where i.Name.Contains(searchString) && m.Name.Contains(manufacture) && i.Price > pri
+                        where i.Name.Contains(searchString) && m.Name.Contains(manufacture) && i.Price < pri
                         select i;
             }
           
@@ -58,9 +61,9 @@ namespace GadgetStore.Controllers
                 items = from i in storeDB.Items
                         join m in storeDB.Manufactures on i.ManufactureId equals m.ManufactureId
                         join c in storeDB.Categories on i.CategoryId equals c.CategoryId
-                        where i.Name.Contains(searchString) && m.Name.Contains(manufacture) && c.Name.Contains(category) && i.Price > pri
+                        where i.Name.Contains(searchString) && m.Name.Contains(manufacture) && c.Name.Contains(category) && i.Price < pri
                         select i;
-            }         
+            }
             return View(items);
         }
 
@@ -99,7 +102,6 @@ namespace GadgetStore.Controllers
             ViewBag.Category = queryCategory.First();
 
             ViewBag.SpecificOrdersAmmount = GetSpecificOrdersAmount(id);
-
             return View(item); 
         }
 
@@ -222,6 +224,31 @@ namespace GadgetStore.Controllers
             return PartialView("ItemsChart");
         }
 
+        public ActionResult SearchPartial()
+        {
+            //Get the categories
+            ViewData["CatSearchList"] = CatSearchList();
+            ViewData["ManSearchList"] = ManSearchList();
+            return PartialView("SearchPartial");
+        }
+
+        public List<CategoryModel> CatSearchList()
+        {
+            //Get the categories
+            var categories = from c in storeDB.Categories
+                             select c;
+            
+            return (categories.ToList());
+        }
+
+        public List<ManufactureModel> ManSearchList()
+        {
+            //Get the categories
+            var manufactures = from m in storeDB.Manufactures
+                             select m;
+
+            return (manufactures.ToList());
+        }
        
     }
 

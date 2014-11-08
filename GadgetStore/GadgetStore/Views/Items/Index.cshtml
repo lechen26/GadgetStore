@@ -17,16 +17,7 @@
               </div>
         </div>
         <div>
-            @using (Html.BeginForm("Index", "Items", FormMethod.Get))
-            {
-               <p> ItemName: @Html.TextBox("searchString") <br />
-                   Category: @Html.TextBox("category") <br /> 
-                   Manufacture: @Html.TextBox("manufacture") <br />
-                   Price: @Html.TextBox("price") <br />
-                <input type="submit" value="Filter" />     
-                <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Items")    '"/>
-               </p>                                               
-            }
+            @{Html.RenderAction("SearchPartial", "Items");}
         </div>                
     </div>
 

@@ -1,0 +1,27 @@
+﻿@using GadgetStore.Models
+@using (Html.BeginForm("Index", "Items", FormMethod.Get))
+            {
+               <p> ItemName: @Html.TextBox("searchString") <br />
+                       @{
+
+                            var CatListItems = new List<SelectListItem>();
+                            foreach (var catitem in (List<CategoryModel>)ViewData["CatSearchList"])
+                            {
+                                CatListItems.Add(new SelectListItem { Text = @catitem.Name, Value = @catitem.Name });
+                            }
+                            @Html.DropDownList("category", CatListItems,"Categories")
+
+                           var ManListItems = new List<SelectListItem>();
+                            foreach (var manitem in (List<ManufactureModel>)ViewData["ManSearchList"])
+                            {
+                                    {ManListItems.Add(new SelectListItem { Text = @manitem.Name, Value = @manitem.Name });}
+                            }
+                                                                    
+                            {@Html.DropDownList("manufacture", ManListItems,"Manufacture")}
+                       }  
+
+                   Price: @Html.TextBox("price") <br />
+                <input type="submit" value="Filter" />     
+                <input type="button" value="Clear" onclick="location.href='@Url.Action("Index", "Items")'"/>
+               </p>                                               
+            }
