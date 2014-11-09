@@ -42,7 +42,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home",new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Items", "Index", "Items", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Categories", "Index", "Categories", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Manufactures", "Index", "Manufactures", new { area = "" }, null)</li>
